@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { InfraModule } from './infrastructure/infra.module';
+import { PresentationModule } from './presentation/presentation.module';
+import { ApplicationModule } from 'src/app/application.module';
 
 @Module({
   imports: [
-    UserModule,
+    //DATABASE CONFIG
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -18,6 +20,11 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    
+    //Modules
+    InfraModule,
+    PresentationModule,
+    ApplicationModule,
   ],
 })
 export class AppModule {}
