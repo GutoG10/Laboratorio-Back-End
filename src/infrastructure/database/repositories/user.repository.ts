@@ -7,7 +7,6 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserRepository extends BaseRepository<UserEntity> {
-
   constructor(@InjectRepository(UserEntity) private _repository: Repository<UserEntity>) {
     super(_repository);
   }  

@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "src/infrastructure/database/base/base.entity";
+import { AnimalSpecieEntity } from "./animal-specie.entity";
 
 
 @Entity({ name: 'user' })
@@ -13,5 +14,13 @@ export class UserEntity extends BaseEntity {
 
     @Column({ type: 'varchar', length: 255 })
     password: string;
-}
 
+    @OneToMany(() => AnimalSpecieEntity, p => p.user_creator)
+    creator_by: string;
+
+    @OneToMany(() => AnimalSpecieEntity, p => p.user_editor)
+    edited_by: string;
+
+    @OneToMany(() => AnimalSpecieEntity, p => p.user_archived)
+    archived_by: string;
+}
