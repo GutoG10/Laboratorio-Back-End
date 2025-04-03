@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { UserEntity } from 'src/domain/entities';
-import { CreateUserUsecase } from 'src/app/usecases';
+import { CreateUserUsecase } from 'src/application/usecases';
 
 
 @Controller('user')

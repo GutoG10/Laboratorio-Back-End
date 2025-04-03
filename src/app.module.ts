@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { InfraModule } from './infrastructure/infra.module';
 import { PresentationModule } from './presentation/presentation.module';
-import { ApplicationModule } from 'src/app/application.module';
+import { ApplicationModule } from 'src/application/application.module';
 
 @Module({
   imports: [
