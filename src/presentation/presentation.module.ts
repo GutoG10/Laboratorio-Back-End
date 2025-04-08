@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { UserController, AnimalSpecieController, ClientController } from "./controllers";
+import { UserController, AnimalSpecieController, ClientController, AnimalBreedController } from "./controllers";
 import { ApplicationModule } from "src/application/application.module";
 
 @Module({
@@ -8,6 +8,7 @@ import { ApplicationModule } from "src/application/application.module";
         UserController, 
         AnimalSpecieController, 
         ClientController,
+        AnimalBreedController
     ],
     exports: [PresentationModule],
 })

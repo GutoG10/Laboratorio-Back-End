@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { AnimalSpecieEntity } from "src/domain/entities/animal-specie.entity";
-import { AnimalSpecieRepository } from "src/infrastructure/database/repositories/animal-specie.repository";
+import { AnimalSpecieRepository } from "src/infrastructure/database/repositories/animal_specie.repository";
 
 @Injectable()
 export class GetAllAnimalSpecieUsecase {
