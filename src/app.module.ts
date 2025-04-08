@@ -18,7 +18,7 @@ import { ApplicationModule } from 'src/application/application.module';
       database: process.env.DB_NAME,
       schema: process.env.DB_SCHEMA,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
     }),
     
     //Modules
