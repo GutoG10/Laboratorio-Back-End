@@ -14,13 +14,4 @@ export class UserEntity extends BaseEntity {
 
     @Column({ type: 'varchar', length: 255 })
     password: string;
-
-    @OneToMany(() => AnimalSpecieEntity, p => p.user_creator)
-    creator_by: string;
-
-    @OneToMany(() => AnimalSpecieEntity, p => p.user_editor)
-    edited_by: string;
-
-    @OneToMany(() => AnimalSpecieEntity, p => p.user_archived)
-    archived_by: string;
 }
