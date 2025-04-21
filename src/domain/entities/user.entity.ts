@@ -1,6 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { BaseEntity } from "src/infrastructure/database/base/base.entity";
-import { AnimalSpecieEntity } from "./animal-specie.entity";
+import { Column, Entity } from "typeorm";
+import { BaseEntity } from "src/infrastructure/database/base";
 
 
 @Entity({ name: 'user' })

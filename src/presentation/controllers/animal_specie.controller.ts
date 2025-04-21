@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
-import { CreateAnimalSpecieUsecase } from "src/application/usecases/create-animal-specie.usecase";
-import { GetAllAnimalSpecieUsecase } from "src/application/usecases/get-all-animal-specie.usecase";
-import { AnimalSpecieEntity } from "src/domain/entities/animal-specie.entity";
+import { CreateAnimalSpecieUsecase, GetAllAnimalSpecieUsecase } from "src/application/usecases";
+import { AnimalSpecieEntity } from "src/domain/entities";
 
 @Controller('animal_specie')
 export class AnimalSpecieController{

@@ -21,7 +21,7 @@ import { ApplicationModule } from 'src/application/application.module';
       synchronize: false,
     }),
     
-    //Modules
+    //MODULES
     InfraModule,
     PresentationModule,
     ApplicationModule,

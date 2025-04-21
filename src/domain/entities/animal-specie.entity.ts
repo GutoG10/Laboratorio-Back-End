@@ -1,6 +1,6 @@
-import { BaseEntity } from "src/infrastructure/database/base/base.entity";
+import { BaseEntity } from "src/infrastructure/database/base";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { UserEntity } from "./user.entity";
+import { UserEntity } from "src/domain/entities";
 
 
 @Entity('animal_specie')
