@@ -1,13 +1,8 @@
 import { Module } from "@nestjs/common";
-import { UserRepository } from "./database/repositories/user.repository";
-import { ClientEntity, UserEntity } from "src/domain/entities";
-import { BaseRepository } from "src/infrastructure/database/base/base.repository";
+import { ClientEntity, UserEntity, AnimalBreedEntity, AnimalSpecieEntity } from "src/domain/entities";
+import { BaseRepository } from "src/infrastructure/database/base";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { AnimalSpecieRepository } from "./database/repositories/animal_specie.repository";
-import { AnimalSpecieEntity } from "src/domain/entities/animal-specie.entity";
-import { AnimalBreedRepository } from "./database/repositories/animal-breed.repository";
-import { AnimalBreedEntity } from "src/domain/entities/animal-breed.entity";
-import { ClientRepository } from "./database/repositories/client.repository";
+import { AnimalSpecieRepository, AnimalBreedRepository, ClientRepository, UserRepository } from "./database/repositories/";
 
 @Module({
     imports: [TypeOrmModule.forFeature([UserEntity, AnimalSpecieEntity, ClientEntity, AnimalBreedEntity])],

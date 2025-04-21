@@ -1,16 +1,20 @@
 import { Module } from "@nestjs/common";
 import { CreateUserUsecase } from "./usecases/create-user.usecase";
 import { InfraModule } from "src/infrastructure/infra.module";
-import { GetAllAnimalSpecieUsecase } from "./usecases/get-all-animal-specie.usecase";
-import { CreateAnimalSpecieUsecase } from "./usecases/create-animal-specie.usecase";
-import { CreateAnimalBreedUsecase } from './usecases/create-animal-breed.usecase'; 
-import { GetAllAnimalBreedUsecase } from './usecases/get-all-animal-breed.usecase'; 
-import { GetAllClientUsecase } from "./usecases/get-all-client.usecase";
-import { CreateClientUsecase } from "./usecases/create-client.usecase";
+import { 
+    GetAllAnimalSpecieUsecase, 
+    CreateAnimalSpecieUsecase, 
+    CreateAnimalBreedUsecase, 
+    GetAllAnimalBreedUsecase, 
+    GetAllClientUsecase, 
+    CreateClientUsecase 
+} from "./usecases";
+import { EditClientUsecase } from "./usecases/edit-client.usecase";
 
 @Module({
     imports: [InfraModule],
     providers: [
+        EditClientUsecase,
         GetAllClientUsecase,
         GetAllAnimalSpecieUsecase,
         CreateAnimalSpecieUsecase,
@@ -20,6 +24,7 @@ import { CreateClientUsecase } from "./usecases/create-client.usecase";
         CreateClientUsecase,
     ], 
     exports: [
+        EditClientUsecase,
         GetAllClientUsecase, 
         GetAllAnimalSpecieUsecase, 
         CreateAnimalSpecieUsecase,

@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { BaseRepository } from "../base/base.repository";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { AnimalBreedEntity } from "src/domain/entities/animal-breed.entity";
+import { AnimalBreedEntity } from "src/domain/entities/";
 
 @Injectable()
 export class AnimalBreedRepository extends BaseRepository<AnimalBreedEntity> {
