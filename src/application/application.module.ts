@@ -7,7 +7,9 @@ import {
     CreateAnimalBreedUsecase, 
     GetAllAnimalBreedUsecase, 
     GetAllClientUsecase, 
-    CreateClientUsecase 
+    CreateClientUsecase,
+    CreatePetUsecase,
+    GetAllPetUsecase
 } from "./usecases";
 import { EditClientUsecase } from "./usecases/edit-client.usecase";
 
@@ -22,6 +24,8 @@ import { EditClientUsecase } from "./usecases/edit-client.usecase";
         CreateAnimalBreedUsecase, 
         GetAllAnimalBreedUsecase,
         CreateClientUsecase,
+        CreatePetUsecase,
+        GetAllPetUsecase
     ], 
     exports: [
         EditClientUsecase,
@@ -32,6 +36,8 @@ import { EditClientUsecase } from "./usecases/edit-client.usecase";
         CreateAnimalBreedUsecase,
         GetAllAnimalBreedUsecase,
         CreateClientUsecase,
+        CreatePetUsecase,
+        GetAllPetUsecase
     ],
 })
 export class ApplicationModule {}

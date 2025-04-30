@@ -13,3 +13,7 @@ export * from './create-animal-specie.usecase';
 //ANIMAL BREED
 export * from './create-animal-breed.usecase';
 export * from './get-all-animal-breed.usecase';
+
+//PET
+export * from './create_pet.usecase';
+export * from './get-all-pet.usecase';

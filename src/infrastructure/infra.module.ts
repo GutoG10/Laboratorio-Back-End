@@ -3,9 +3,11 @@ import { ClientEntity, UserEntity, AnimalBreedEntity, AnimalSpecieEntity } from 
 import { BaseRepository } from "src/infrastructure/database/base";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AnimalSpecieRepository, AnimalBreedRepository, ClientRepository, UserRepository } from "./database/repositories/";
+import { PetEntity } from "src/domain/entities/pet.entity";
+import { PetRepository } from "./database/repositories/pet.repository";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([UserEntity, AnimalSpecieEntity, ClientEntity, AnimalBreedEntity])],
+    imports: [TypeOrmModule.forFeature([UserEntity, AnimalSpecieEntity, ClientEntity, AnimalBreedEntity, PetEntity])],
     providers: 
     [
         ClientRepository,
@@ -25,8 +27,17 @@ import { AnimalSpecieRepository, AnimalBreedRepository, ClientRepository, UserRe
 
         },
         UserRepository,
+        {
+            provide: BaseRepository<UserEntity>,
+            useClass: UserRepository,
+        },
+        PetRepository
+        ,{
+            provide: BaseRepository<PetEntity>,
+            useClass: PetRepository,
+        }
     ],
-    exports: [UserRepository, ClientRepository, AnimalSpecieRepository, AnimalBreedRepository]
+    exports: [UserRepository, ClientRepository, AnimalSpecieRepository, AnimalBreedRepository, PetRepository],
 
 })
 export class InfraModule {}
