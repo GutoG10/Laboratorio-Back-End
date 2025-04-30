@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { UserController, AnimalSpecieController, ClientController, AnimalBreedController } from "./controllers";
 import { ApplicationModule } from "src/application/application.module";
+import { PetController } from "./controllers/pet.controller";
 
 @Module({
     imports: [ApplicationModule],
@@ -8,7 +9,8 @@ import { ApplicationModule } from "src/application/application.module";
         UserController, 
         AnimalSpecieController, 
         ClientController,
-        AnimalBreedController
+        AnimalBreedController,
+        PetController
     ],
     exports: [PresentationModule],
 })
