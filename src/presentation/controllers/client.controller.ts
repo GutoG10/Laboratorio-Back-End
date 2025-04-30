@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Patch, Put } from "@nestjs/common";
-import { EditClientUsecase, GetAllClientUsecase } from "src/application/usecases";
+import { EditClientUsecase, GetAllClientUsecase, SelectClientUsecase } from "src/application/usecases";
 import { ClientEntity } from "src/domain/entities";
 import { DeepPartial, UpdateResult } from "typeorm";
 
@@ -8,11 +8,17 @@ export class ClientController{
     constructor(
         private readonly getAllClientUsecase: GetAllClientUsecase,
         private readonly editClientUsecase: EditClientUsecase,
+        private readonly selectClientUsecase: SelectClientUsecase,
     ){}
 
     @Get()
     getAll(){
         return this.getAllClientUsecase.process();
+    }
+
+    @Get('select')
+    getAllForSelect(){
+        return this.selectClientUsecase.process();
     }
 
     @Put()

@@ -10,5 +10,11 @@ export class PetRepository extends BaseRepository<PetEntity> {
     super(_repository);
   }  
 
+  async getAllForSelect(): Promise<Partial<PetEntity[]>> {
+    return this._repository
+      .createQueryBuilder('pet')
+      .select(['pet.id', 'pet.name'])
+      .getMany();
+  }
   
 }
