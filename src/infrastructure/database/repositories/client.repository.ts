@@ -10,4 +10,11 @@ export class ClientRepository extends BaseRepository<ClientEntity>{
     constructor(@InjectRepository(ClientEntity) private _repository: Repository<ClientEntity>) {
         super(_repository);
     }
+
+    async getAllForSelect(): Promise<Partial<ClientEntity[]>> {
+        return this._repository
+            .createQueryBuilder('client')
+            .select(['client.id', 'client.name'])
+            .getMany();
+    }
 }

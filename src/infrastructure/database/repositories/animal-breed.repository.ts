@@ -18,4 +18,12 @@ export class AnimalBreedRepository extends BaseRepository<AnimalBreedEntity> {
       .leftJoinAndSelect('animal_breed.user_archived', 'archived')
       .getMany();
   }
+
+  async getAllForSelect(specie: string): Promise<Partial<AnimalBreedEntity[]>> {
+    return this._repository
+      .createQueryBuilder('animal_breed')
+      .select(['animal_breed.id', 'animal_breed.name'])
+      .where('animal_breed.animal_specie_id = :specie', { specie })
+      .getMany();
+  }
 }

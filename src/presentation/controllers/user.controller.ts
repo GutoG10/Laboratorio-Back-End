@@ -1,13 +1,19 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { UserEntity } from 'src/domain/entities';
-import { CreateUserUsecase } from 'src/application/usecases';
+import { CreateUserUsecase, SelectUserUsecase } from 'src/application/usecases';
 
 
 @Controller('user')
 export class UserController {
   constructor(
-        private readonly createUserUsecase: CreateUserUsecase,
+    private readonly createUserUsecase: CreateUserUsecase,
+    private readonly selectUserUsecase: SelectUserUsecase,
   ) {}
+
+  @Get('select')
+  getAllForSelect() {
+    return this.selectUserUsecase.process();
+  }
 
   @Post()
   create(@Body() data: Partial<UserEntity>) {

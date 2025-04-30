@@ -9,7 +9,13 @@ import {
     GetAllClientUsecase, 
     CreateClientUsecase,
     CreatePetUsecase,
-    GetAllPetUsecase
+    GetAllPetUsecase,
+    GetAllAnimalSpecieByNameUsecase,
+    SelectAnimalBreedUsecase,
+    SelectAnimalSpecieUsecase,
+    SelectClientUsecase,
+    SelectPetUsecase,
+    SelectUserUsecase
 } from "./usecases";
 import { EditClientUsecase } from "./usecases/edit-client.usecase";
 
@@ -17,9 +23,15 @@ import { EditClientUsecase } from "./usecases/edit-client.usecase";
     imports: [InfraModule],
     providers: [
         EditClientUsecase,
+        SelectAnimalBreedUsecase,
+        SelectAnimalSpecieUsecase,
+        SelectPetUsecase,
+        SelectClientUsecase,
+        SelectUserUsecase,
         GetAllClientUsecase,
         GetAllAnimalSpecieUsecase,
         CreateAnimalSpecieUsecase,
+        GetAllAnimalSpecieByNameUsecase,
         CreateUserUsecase,
         CreateAnimalBreedUsecase, 
         GetAllAnimalBreedUsecase,
@@ -30,8 +42,14 @@ import { EditClientUsecase } from "./usecases/edit-client.usecase";
     exports: [
         EditClientUsecase,
         GetAllClientUsecase, 
+        SelectAnimalBreedUsecase,
+        SelectAnimalSpecieUsecase,
+        SelectPetUsecase,
+        SelectUserUsecase,
+        SelectClientUsecase,
         GetAllAnimalSpecieUsecase, 
         CreateAnimalSpecieUsecase,
+        GetAllAnimalSpecieByNameUsecase,
         CreateUserUsecase,
         CreateAnimalBreedUsecase,
         GetAllAnimalBreedUsecase,
