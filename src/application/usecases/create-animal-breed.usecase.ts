@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
-import { AnimalBreedEntity } from "src/domain/entities/";
-import { AnimalBreedRepository } from "src/infrastructure/database/repositories/";
+import { Injectable } from '@nestjs/common';
+import { AnimalBreedEntity } from 'src/domain/entities/';
+import { AnimalBreedRepository } from 'src/infrastructure/database/repositories/';
 
 @Injectable()
 export class CreateAnimalBreedUsecase {

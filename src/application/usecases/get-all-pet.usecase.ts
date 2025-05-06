@@ -3,12 +3,9 @@ import { PetRepository } from 'src/infrastructure/database/repositories/pet.repo
 
 @Injectable()
 export class GetAllPetUsecase {
-  constructor(
-    private readonly repository: PetRepository,
-  ) {}
+  constructor(private readonly repository: PetRepository) {}
 
   async process() {
     return this.repository.getAll();
-
   }
 }

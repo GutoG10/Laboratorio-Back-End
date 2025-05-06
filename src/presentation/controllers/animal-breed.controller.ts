@@ -1,6 +1,10 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
-import { GetAllAnimalBreedUsecase, CreateAnimalBreedUsecase, SelectAnimalBreedUsecase } from "src/application/usecases";
-import { AnimalBreedEntity } from "src/domain/entities";
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  GetAllAnimalBreedUsecase,
+  CreateAnimalBreedUsecase,
+  SelectAnimalBreedUsecase,
+} from 'src/application/usecases';
+import { AnimalBreedEntity } from 'src/domain/entities';
 
 @Controller('animal_breed')
 export class AnimalBreedController {
@@ -16,7 +20,7 @@ export class AnimalBreedController {
   }
 
   @Get('select/:specie_id')
-  getAllForSelect(@Param('specie_id') specie: string){
+  getAllForSelect(@Param('specie_id') specie: string) {
     return this.selectAnimalBreedUsecase.process(specie);
   }
 

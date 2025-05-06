@@ -1,13 +1,13 @@
-import { BaseEntity } from "src/infrastructure/database/base";
+import { BaseEntity } from 'src/infrastructure/database/base';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
-} from "typeorm";
-import { UserEntity } from "./user.entity";
-import { AnimalSpecieEntity } from "src/domain/entities";
+} from 'typeorm';
+import { UserEntity } from './user.entity';
+import { AnimalSpecieEntity } from 'src/domain/entities';
 
 @Entity('animal_breed')
 export class AnimalBreedEntity extends BaseEntity {
