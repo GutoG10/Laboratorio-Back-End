@@ -6,7 +6,7 @@ import { Injectable } from '@nestjs/common';
 export class CreateUserUsecase {
   constructor(private readonly repository: UserRepository) {}
 
-  async process(data: Partial<UserEntity>): Promise<UserEntity> {
-    return await this.repository.create(data);
+  async process(data: Partial<UserEntity>): Promise<Partial<UserEntity> | null> {
+    return await this.repository.UserSignIn(data);
   }
 }

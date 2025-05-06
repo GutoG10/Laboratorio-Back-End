@@ -4,9 +4,9 @@ import {
   AnimalSpecieController,
   ClientController,
   AnimalBreedController,
+  PetController
 } from './controllers';
 import { ApplicationModule } from 'src/application/application.module';
-import { PetController } from './controllers/pet.controller';
 
 @Module({
   imports: [ApplicationModule],
@@ -16,7 +16,7 @@ import { PetController } from './controllers/pet.controller';
     ClientController,
     AnimalBreedController,
     PetController,
-  ],
+ ],
   exports: [PresentationModule],
 })
 export class PresentationModule {}
