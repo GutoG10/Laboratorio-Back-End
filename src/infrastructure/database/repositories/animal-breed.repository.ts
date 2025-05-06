@@ -1,12 +1,15 @@
-import { Injectable } from "@nestjs/common";
-import { BaseRepository } from "../base/base.repository";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { AnimalBreedEntity } from "src/domain/entities/";
+import { Injectable } from '@nestjs/common';
+import { BaseRepository } from '../base/base.repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { AnimalBreedEntity } from 'src/domain/entities/';
 
 @Injectable()
 export class AnimalBreedRepository extends BaseRepository<AnimalBreedEntity> {
-  constructor(@InjectRepository(AnimalBreedEntity) private _repository: Repository<AnimalBreedEntity>) {
+  constructor(
+    @InjectRepository(AnimalBreedEntity)
+    private _repository: Repository<AnimalBreedEntity>,
+  ) {
     super(_repository);
   }
 

@@ -20,7 +20,7 @@ import { ApplicationModule } from 'src/application/application.module';
       autoLoadEntities: true,
       synchronize: false,
     }),
-    
+
     //MODULES
     InfraModule,
     PresentationModule,
