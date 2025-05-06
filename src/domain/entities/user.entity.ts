@@ -6,6 +6,9 @@ export class UserEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 100 })
   name: string;
 
+  @Column({ type: 'varchar', length: 100})
+  lastName: string;
+
   @Column({ type: 'varchar', length: 255, unique: true })
   email: string;
 
