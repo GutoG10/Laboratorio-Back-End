@@ -13,6 +13,9 @@ export class ClientEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 100, nullable: false })
   name: string;
 
+  @Column({ type: 'varchar', length: 100, nullable: false })
+  last_name: string;
+
   @Column({ type: 'varchar', length: 11 })
   phone: string;
 

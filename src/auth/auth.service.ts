@@ -32,7 +32,7 @@ export class AuthService {
       user: {
         id: user.id,
         name: user.name,
-        lastName: user.lastName,
+        last_name: user.last_name,
         email: user.email,
       },
       access_token: token,
