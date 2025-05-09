@@ -8,7 +8,7 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { UserEntity } from './user.entity';
-import { AnimalBreedEntity, AnimalSpecieEntity } from 'src/domain/entities';
+import { AnimalBreedEntity, AnimalSpecieEntity, ClientEntity } from 'src/domain/entities';
 
 @Entity('pet')
 export class PetEntity extends BaseEntity {
@@ -50,25 +50,25 @@ export class PetEntity extends BaseEntity {
 
   @ManyToOne(() => AnimalBreedEntity)
   @JoinColumn([{ name: 'animal_breed_id', referencedColumnName: 'id' }])
-  breed: AnimalBreedEntity;
+  animalBreed: AnimalBreedEntity;
 
   @ManyToOne(() => AnimalSpecieEntity)
   @JoinColumn([{ name: 'animal_specie_id', referencedColumnName: 'id' }])
-  specie: AnimalSpecieEntity;
+  animalSpecie: AnimalSpecieEntity;
 
   @ManyToOne(() => UserEntity)
   @JoinColumn([{ name: 'archived_by', referencedColumnName: 'id' }])
-  user_archived: UserEntity;
+  archivedBy: UserEntity;
 
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => ClientEntity)
   @JoinColumn([{ name: 'client_id', referencedColumnName: 'id' }])
-  client: UserEntity;
+  client: ClientEntity;
 
   @ManyToOne(() => UserEntity)
   @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
-  user_creator: UserEntity;
+  createdBy: UserEntity;
 
   @ManyToOne(() => UserEntity)
   @JoinColumn([{ name: 'edited_by', referencedColumnName: 'id' }])
-  user_editor: UserEntity;
+  editedBy: UserEntity;
 }
