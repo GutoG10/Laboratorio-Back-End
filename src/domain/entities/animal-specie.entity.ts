@@ -25,9 +25,6 @@ export class AnimalSpecieEntity extends BaseEntity {
   @Column({ type: 'timestamp', nullable: true })
   edited_at: Date;
 
-  @Column({ type: 'boolean', nullable: false })
-  archived: boolean;
-
   @Column({ type: 'uuid', nullable: true })
   archived_by: string;
 

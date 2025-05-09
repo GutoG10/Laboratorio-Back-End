@@ -6,6 +6,6 @@ export class GetAllPetUsecase {
   constructor(private readonly repository: PetRepository) {}
 
   async process() {
-    return this.repository.getAll();
+    return this.repository.findWithRelations();
   }
 }
