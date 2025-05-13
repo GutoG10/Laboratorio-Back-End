@@ -19,9 +19,9 @@ export class AnimalSpecieRepository extends BaseRepository<AnimalSpecieEntity> {
   ): Promise<AnimalSpecieEntity[]> {
     return this._repository
       .createQueryBuilder('animal_specie')
-      .leftJoinAndSelect('animal_specie.UserCreator', 'creator')
-      .leftJoinAndSelect('animal_specie.UserEditor', 'editor')
-      .leftJoinAndSelect('animal_specie.UserArchived', 'archived')
+      .leftJoinAndSelect('animal_specie.createdBy', 'creator')
+      .leftJoinAndSelect('animal_specie.EditedBy', 'editor')
+      .leftJoinAndSelect('animal_specie.ArchivedBy', 'archived')
       .where('animal_specie.name ILIKE :name', { name: `%${name}%` })
       .andWhere('animal_specie.archived = :archived', { archived })
       .getMany();
@@ -37,9 +37,9 @@ export class AnimalSpecieRepository extends BaseRepository<AnimalSpecieEntity> {
   async getAllData(): Promise<AnimalSpecieEntity[]> {
     return this._repository
       .createQueryBuilder('animal_specie')
-      .leftJoinAndSelect('animal_specie.UserCreator', 'creator')
-      .leftJoinAndSelect('animal_specie.UserEditor', 'editor')
-      .leftJoinAndSelect('animal_specie.UserArchived', 'archived')
+      .leftJoinAndSelect('animal_specie.createdBy', 'creator')
+      .leftJoinAndSelect('animal_specie.editedBy', 'editor')
+      .leftJoinAndSelect('animal_specie.archivedBy', 'archived')
       .getMany();
   }
 }

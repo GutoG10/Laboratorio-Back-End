@@ -41,13 +41,13 @@ export class AnimalBreedEntity extends BaseEntity {
 
   @ManyToOne(() => UserEntity)
   @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])
-  user_creator: UserEntity;
+  createdBy: UserEntity;
 
   @ManyToOne(() => UserEntity)
   @JoinColumn([{ name: 'edited_by', referencedColumnName: 'id' }])
-  user_editor: UserEntity;
+  editedBy: UserEntity;
 
   @ManyToOne(() => UserEntity)
   @JoinColumn([{ name: 'archived_by', referencedColumnName: 'id' }])
-  user_archived: UserEntity;
+  archivedBy: UserEntity;
 }

@@ -16,9 +16,9 @@ export class AnimalBreedRepository extends BaseRepository<AnimalBreedEntity> {
   async getAllData(): Promise<AnimalBreedEntity[]> {
     return this._repository
       .createQueryBuilder('animal_breed')
-      .leftJoinAndSelect('animal_breed.user_creator', 'creator')
-      .leftJoinAndSelect('animal_breed.user_editor', 'editor')
-      .leftJoinAndSelect('animal_breed.user_archived', 'archived')
+      .leftJoinAndSelect('animal_breed.createdBy', 'creator')
+      .leftJoinAndSelect('animal_breed.editedBy', 'editor')
+      .leftJoinAndSelect('animal_breed.archivedBy', 'archived')
       .getMany();
   }
 
