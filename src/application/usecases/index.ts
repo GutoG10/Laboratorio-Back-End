@@ -18,6 +18,7 @@ export * from './select-animal-specie.usecase';
 export * from './create-animal-breed.usecase';
 export * from './get-all-animal-breed.usecase';
 export * from './select-animal-breed.usecase';
+export * from './get-listing-animal-breed.usecase'
 
 //PET
 export * from './create_pet.usecase';
