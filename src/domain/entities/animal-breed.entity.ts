@@ -37,7 +37,7 @@ export class AnimalBreedEntity extends BaseEntity {
 
   @ManyToOne(() => AnimalSpecieEntity)
   @JoinColumn([{ name: 'animal_specie_id', referencedColumnName: 'id' }])
-  specie: AnimalSpecieEntity;
+  animalSpecie: AnimalSpecieEntity;
 
   @ManyToOne(() => UserEntity)
   @JoinColumn([{ name: 'created_by', referencedColumnName: 'id' }])

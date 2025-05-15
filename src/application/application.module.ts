@@ -18,6 +18,7 @@ import {
   SelectUserUsecase,
 } from './usecases';
 import { EditClientUsecase } from './usecases/edit-client.usecase';
+import { GetListingAnimalBreedUsecase } from './usecases/get-listing-animal-breed.usecase';
 
 @Module({
   imports: [InfraModule],
@@ -38,6 +39,7 @@ import { EditClientUsecase } from './usecases/edit-client.usecase';
     CreateClientUsecase,
     CreatePetUsecase,
     GetAllPetUsecase,
+    GetListingAnimalBreedUsecase,
   ],
   exports: [
     EditClientUsecase,
@@ -56,6 +58,7 @@ import { EditClientUsecase } from './usecases/edit-client.usecase';
     CreateClientUsecase,
     CreatePetUsecase,
     GetAllPetUsecase,
+    GetListingAnimalBreedUsecase,
   ],
 })
 export class ApplicationModule {}

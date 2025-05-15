@@ -3,6 +3,7 @@ import {
   GetAllAnimalBreedUsecase,
   CreateAnimalBreedUsecase,
   SelectAnimalBreedUsecase,
+  GetListingAnimalBreedUsecase,
 } from 'src/application/usecases';
 import { AnimalBreedEntity } from 'src/domain/entities';
 
@@ -12,6 +13,7 @@ export class AnimalBreedController {
     private readonly createAnimalBreedUsecase: CreateAnimalBreedUsecase,
     private readonly getAllAnimalBreedUsecase: GetAllAnimalBreedUsecase,
     private readonly selectAnimalBreedUsecase: SelectAnimalBreedUsecase,
+    private readonly getListingAnimalBreedUsecase: GetListingAnimalBreedUsecase,
   ) {}
 
   @Get()
@@ -22,6 +24,11 @@ export class AnimalBreedController {
   @Get('select/:specie_id')
   getAllForSelect(@Param('specie_id') specie: string) {
     return this.selectAnimalBreedUsecase.process(specie);
+  }
+
+  @Get('get-listing')
+  getListing() {
+    return this.getListingAnimalBreedUsecase.process();
   }
 
   @Post()
