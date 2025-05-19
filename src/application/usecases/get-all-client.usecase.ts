@@ -7,6 +7,6 @@ export class GetAllClientUsecase {
   constructor(private readonly _clientRepository: ClientRepository) {}
 
   async process(): Promise<ClientEntity[]> {
-    return await this._clientRepository.getAll();
+    return await this._clientRepository.findWithRelations();
   }
 }
