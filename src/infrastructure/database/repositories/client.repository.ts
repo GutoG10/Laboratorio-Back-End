@@ -21,6 +21,7 @@ export class ClientRepository extends BaseRepository<ClientEntity> {
         'client.last_name',
         'client.email',
         'client.phone',
+        'client.archived',
       ])
       .orderBy('client.name', 'ASC') 
       .getMany();

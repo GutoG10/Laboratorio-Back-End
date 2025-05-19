@@ -1,10 +1,12 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { AuthUserDto } from 'src/application/dto';
 import {
   CreateAnimalSpecieUsecase,
   GetAllAnimalSpecieByNameUsecase,
   GetAllAnimalSpecieUsecase,
   SelectAnimalSpecieUsecase,
 } from 'src/application/usecases';
+import { GetUser } from 'src/common/user';
 import { AnimalSpecieEntity } from 'src/domain/entities';
 
 @Controller('animal_specie')
@@ -35,7 +37,11 @@ export class AnimalSpecieController {
   }
 
   @Post()
-  create(@Body() data: Partial<AnimalSpecieEntity>) {
+  create(
+    @GetUser() user: AuthUserDto,
+    @Body() data: Partial<AnimalSpecieEntity>,
+  ) {
+    data.created_by = user.id;
     return this.createAnimalSpecieUsecase.process(data);
   }
 }

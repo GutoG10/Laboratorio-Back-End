@@ -40,6 +40,7 @@ export class AnimalSpecieRepository extends BaseRepository<AnimalSpecieEntity> {
       .leftJoinAndSelect('animal_specie.createdBy', 'creator')
       .leftJoinAndSelect('animal_specie.editedBy', 'editor')
       .leftJoinAndSelect('animal_specie.archivedBy', 'archived')
+      .orderBy('animal_specie.name', 'ASC')
       .getMany();
   }
 }

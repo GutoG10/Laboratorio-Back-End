@@ -1,4 +1,7 @@
-import { Body, Controller, Get, Param, Patch, Put } from '@nestjs/common';
+import { GetUser } from 'src/common/user';
+import { AuthUserDto } from 'src/application/dto';
+import { CreateClientUsecase } from './../../application/usecases/create-client.usecase';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import {
   EditClientUsecase,
   GetAllClientUsecase,
@@ -13,6 +16,7 @@ export class ClientController {
     private readonly getAllClientUsecase: GetAllClientUsecase,
     private readonly editClientUsecase: EditClientUsecase,
     private readonly selectClientUsecase: SelectClientUsecase,
+    private readonly createClientUsecase:CreateClientUsecase,
   ) {}
 
   @Get()
@@ -25,16 +29,20 @@ export class ClientController {
     return this.selectClientUsecase.process();
   }
 
-  @Put()
-  create() {
-    return this.getAllClientUsecase.process();
-  }
-
   @Patch('/:id')
   update(
     @Param('id') id: string,
     @Body() data: DeepPartial<ClientEntity>,
   ): Promise<UpdateResult> {
     return this.editClientUsecase.process(id, data);
+  }
+
+  @Post()
+  create(
+    @GetUser() user: AuthUserDto,
+    @Body() data: Partial<ClientEntity>,
+  ) {
+    data.created_by = user.id;
+    return this.createClientUsecase.process(data);
   }
 }
