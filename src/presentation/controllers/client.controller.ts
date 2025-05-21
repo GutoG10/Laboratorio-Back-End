@@ -3,9 +3,9 @@ import { AuthUserDto } from 'src/application/dto';
 import { CreateClientUsecase } from './../../application/usecases/create-client.usecase';
 import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import {
-  EditClientUsecase,
   GetAllClientUsecase,
   SelectClientUsecase,
+  UpdateClientUsecase,
 } from 'src/application/usecases';
 import { ClientEntity } from 'src/domain/entities';
 import { DeepPartial, UpdateResult } from 'typeorm';
@@ -14,7 +14,7 @@ import { DeepPartial, UpdateResult } from 'typeorm';
 export class ClientController {
   constructor(
     private readonly getAllClientUsecase: GetAllClientUsecase,
-    private readonly editClientUsecase: EditClientUsecase,
+    private readonly updateClientUsecase: UpdateClientUsecase,
     private readonly selectClientUsecase: SelectClientUsecase,
     private readonly createClientUsecase:CreateClientUsecase,
   ) {}
@@ -29,12 +29,13 @@ export class ClientController {
     return this.selectClientUsecase.process();
   }
 
-  @Patch('/:id')
+  @Patch('update/:id')
   update(
     @Param('id') id: string,
-    @Body() data: DeepPartial<ClientEntity>,
+    @Body() data: Partial<ClientEntity>,
+    @GetUser() user: AuthUserDto,
   ): Promise<UpdateResult> {
-    return this.editClientUsecase.process(id, data);
+    return this.updateClientUsecase.process(id, data, user);
   }
 
   @Post()

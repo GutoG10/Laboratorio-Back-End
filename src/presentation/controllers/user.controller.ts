@@ -1,12 +1,16 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
 import { UserEntity } from 'src/domain/entities';
-import { CreateUserUsecase, SelectUserUsecase } from 'src/application/usecases';
+import { CreateUserUsecase, SelectUserUsecase, UpdateUserUsecase } from 'src/application/usecases';
+import { AuthUserDto } from 'src/application/dto';
+import { GetUser } from 'src/common/user';
+import { UpdateResult } from 'typeorm';
 
 @Controller('user')
 export class UserController {
   constructor(
     private readonly createUserUsecase: CreateUserUsecase,
     private readonly selectUserUsecase: SelectUserUsecase,
+    private readonly updateUserUsecase: UpdateUserUsecase,
   ) {}
 
   @Get('select')
@@ -15,27 +19,17 @@ export class UserController {
   }
 
   @Post()
-  create(@Body() data: Partial<UserEntity>) {
+  create(
+    @Body() data: Partial<UserEntity>
+  ) {
     return this.createUserUsecase.process(data);
   }
 
-  // @Get()
-  // getAll() {
-  //   return this.usecase.getAll();
-  // }
-
-  // @Get(':id')
-  // findById(@Param('id') id: UUID) {
-  //   return this.usecase.getById(id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: UUID, @Body() updateUser: Partial<UserEntity>) {
-  //   return this.usecase.update(id, updateUser);
-  // }
-
-  // @Delete(':id')
-  // delete(@Param('id') id: UUID) {
-  //   return this.usecase.delete(id);
-  // }
+  @Patch('update/:id')
+  update(
+    @Param('id') id: string,
+    @Body() data: Partial<UserEntity>,
+  ): Promise<UpdateResult> {
+    return this.updateUserUsecase.process(id, data);
+  }
 }
