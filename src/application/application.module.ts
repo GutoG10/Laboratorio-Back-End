@@ -16,14 +16,17 @@ import {
   SelectClientUsecase,
   SelectPetUsecase,
   SelectUserUsecase,
+  UpdateAnimalSpecieUsecase,
+  UpdateAnimalBreedUsecase,
+  UpdateUserUsecase,
+  UpdatePetUsecase,
+  UpdateClientUsecase,
 } from './usecases';
-import { EditClientUsecase } from './usecases/edit-client.usecase';
 import { GetListingAnimalBreedUsecase } from './usecases/get-listing-animal-breed.usecase';
 
 @Module({
   imports: [InfraModule],
   providers: [
-    EditClientUsecase,
     SelectAnimalBreedUsecase,
     SelectAnimalSpecieUsecase,
     SelectPetUsecase,
@@ -40,9 +43,13 @@ import { GetListingAnimalBreedUsecase } from './usecases/get-listing-animal-bree
     CreatePetUsecase,
     GetAllPetUsecase,
     GetListingAnimalBreedUsecase,
+    UpdateAnimalSpecieUsecase,
+    UpdateAnimalBreedUsecase,
+    UpdateUserUsecase,
+    UpdatePetUsecase,
+    UpdateClientUsecase,
   ],
   exports: [
-    EditClientUsecase,
     GetAllClientUsecase,
     SelectAnimalBreedUsecase,
     SelectAnimalSpecieUsecase,
@@ -59,6 +66,11 @@ import { GetListingAnimalBreedUsecase } from './usecases/get-listing-animal-bree
     CreatePetUsecase,
     GetAllPetUsecase,
     GetListingAnimalBreedUsecase,
+    UpdateAnimalSpecieUsecase,
+    UpdateAnimalBreedUsecase,
+    UpdateUserUsecase,
+    UpdatePetUsecase,
+    UpdateClientUsecase,
   ],
 })
 export class ApplicationModule {}
