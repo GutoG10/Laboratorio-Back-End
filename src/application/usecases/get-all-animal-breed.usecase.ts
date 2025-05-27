@@ -6,6 +6,6 @@ export class GetAllAnimalBreedUsecase {
   constructor(private readonly repository: AnimalBreedRepository) {}
 
   async process() {
-    return this.repository.getAll();
+    return this.repository.findWithRelations();
   }
 }

@@ -22,7 +22,6 @@ import {
   UpdatePetUsecase,
   UpdateClientUsecase,
 } from './usecases';
-import { GetListingAnimalBreedUsecase } from './usecases/get-listing-animal-breed.usecase';
 
 @Module({
   imports: [InfraModule],
@@ -42,7 +41,6 @@ import { GetListingAnimalBreedUsecase } from './usecases/get-listing-animal-bree
     CreateClientUsecase,
     CreatePetUsecase,
     GetAllPetUsecase,
-    GetListingAnimalBreedUsecase,
     UpdateAnimalSpecieUsecase,
     UpdateAnimalBreedUsecase,
     UpdateUserUsecase,
@@ -65,7 +63,6 @@ import { GetListingAnimalBreedUsecase } from './usecases/get-listing-animal-bree
     CreateClientUsecase,
     CreatePetUsecase,
     GetAllPetUsecase,
-    GetListingAnimalBreedUsecase,
     UpdateAnimalSpecieUsecase,
     UpdateAnimalBreedUsecase,
     UpdateUserUsecase,
