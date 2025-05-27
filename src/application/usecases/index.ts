@@ -20,7 +20,6 @@ export * from './update-animal-specie.usecase'
 export * from './create-animal-breed.usecase';
 export * from './get-all-animal-breed.usecase';
 export * from './select-animal-breed.usecase';
-export * from './get-listing-animal-breed.usecase';
 export * from './update-animal-breed.usecase';
 
 //PET

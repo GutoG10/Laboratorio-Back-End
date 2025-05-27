@@ -22,7 +22,7 @@ export class AnimalBreedRepository extends BaseRepository<AnimalBreedEntity> {
       .getMany();
   }
   
-  async getListing(): Promise<AnimalBreedEntity[]> {
+  async findWithRelations(): Promise<AnimalBreedEntity[]> {
     return this._repository
       .createQueryBuilder('animal_breed')
       .leftJoinAndSelect('animal_breed.animalSpecie', 'animal_specie')
