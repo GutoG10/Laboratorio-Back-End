@@ -28,7 +28,7 @@ export class PetEntity extends BaseEntity {
   birth_date: Date;
 
   @Column({ type: 'numeric', nullable: true })
-  peso: Decimal128;
+  weight: Decimal128;
 
   @CreateDateColumn({ type: 'uuid' })
   created_by: string;
