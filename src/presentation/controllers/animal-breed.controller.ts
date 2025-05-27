@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
   GetAllAnimalBreedUsecase,
@@ -29,7 +29,7 @@ export class AnimalBreedController {
     return this.selectAnimalBreedUsecase.process(specie);
   }
 
-  @Patch('update/:id')
+  @Put(':id')
   update(
     @GetUser() user: AuthUserDto, 
     @Param('id') id: string, 

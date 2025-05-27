@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
   CreatePetUsecase,
@@ -38,7 +38,7 @@ export class PetController {
     return this.createPetUsecase.process(data);
   }
 
-  @Patch('update/:id')
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() data: Partial<PetEntity>,

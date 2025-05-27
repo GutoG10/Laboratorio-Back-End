@@ -21,6 +21,7 @@ import {
   UpdateUserUsecase,
   UpdatePetUsecase,
   UpdateClientUsecase,
+  GetAnimalSpecieByIdUsecase,
 } from './usecases';
 
 @Module({
@@ -46,6 +47,7 @@ import {
     UpdateUserUsecase,
     UpdatePetUsecase,
     UpdateClientUsecase,
+    GetAnimalSpecieByIdUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -68,6 +70,7 @@ import {
     UpdateUserUsecase,
     UpdatePetUsecase,
     UpdateClientUsecase,
+    GetAnimalSpecieByIdUsecase,
   ],
 })
 export class ApplicationModule {}

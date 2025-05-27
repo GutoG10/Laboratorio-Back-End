@@ -4,17 +4,18 @@ export * from './select-user.usecase';
 export * from './update-user.usecase';
 
 //CLIENT
-export * from './get-all-client.usecase';
 export * from './create-client.usecase';
+export * from './get-all-client.usecase';
 export * from './select-client.usecase';
 export * from './update-client.usecase';
 
 //ANIMAL SPECIE
-export * from './get-all-animal-specie.usecase';
 export * from './create-animal-specie.usecase';
 export * from './get-all-animal-specie-by-name.usecase';
+export * from './get-all-animal-specie.usecase';
+export * from './get-animal-specie-by-id';
 export * from './select-animal-specie.usecase';
-export * from './update-animal-specie.usecase'
+export * from './update-animal-specie.usecase';
 
 //ANIMAL BREED
 export * from './create-animal-breed.usecase';

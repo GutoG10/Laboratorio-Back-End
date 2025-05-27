@@ -29,7 +29,7 @@ export class ClientController {
     return this.selectClientUsecase.process();
   }
 
-  @Patch('update/:id')
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() data: Partial<ClientEntity>,

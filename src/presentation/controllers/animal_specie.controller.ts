@@ -1,9 +1,19 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
   CreateAnimalSpecieUsecase,
   GetAllAnimalSpecieByNameUsecase,
   GetAllAnimalSpecieUsecase,
+  GetAnimalSpecieByIdUsecase,
   SelectAnimalSpecieUsecase,
   UpdateAnimalSpecieUsecase,
 } from 'src/application/usecases';
@@ -19,6 +29,7 @@ export class AnimalSpecieController {
     private readonly getAllAnimalSpecieByNameUsecase: GetAllAnimalSpecieByNameUsecase,
     private readonly selectAnimalSpecieUsecase: SelectAnimalSpecieUsecase,
     private readonly updateAnimalSpecieUsecase: UpdateAnimalSpecieUsecase,
+    private readonly getAnimalSpecieByIdUsecase: GetAnimalSpecieByIdUsecase,
   ) {}
 
   @Get()
@@ -39,12 +50,18 @@ export class AnimalSpecieController {
     return this.getAllAnimalSpecieByNameUsecase.process(search, archived);
   }
 
-  @Patch('update/:id')
+  @Get(':id')
+  getById(@Param('id') animalSpecieId: string) {
+    console.log('getById')
+    return this.getAnimalSpecieByIdUsecase.process(animalSpecieId)
+  }
+
+  @Put(':id')
   update(
-    @GetUser() user: AuthUserDto, 
-    @Param('id') id: string, 
-    @Body() data: Partial<AnimalSpecieEntity>
-  ): Promise<UpdateResult>{
+    @GetUser() user: AuthUserDto,
+    @Param('id') id: string,
+    @Body() data: Partial<AnimalSpecieEntity>,
+  ): Promise<UpdateResult> {
     return this.updateAnimalSpecieUsecase.process(id, data, user);
   }
 
