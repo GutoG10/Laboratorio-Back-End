@@ -1,7 +1,8 @@
+import { GetClientByIdUsecase } from './../../application/usecases/get-client-by-id.usecase';
 import { GetUser } from 'src/common/user';
 import { AuthUserDto } from 'src/application/dto';
 import { CreateClientUsecase } from './../../application/usecases/create-client.usecase';
-import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import {
   ArchiveUnarchiveClientUsecase,
   GetAllClientUsecase,
@@ -9,7 +10,7 @@ import {
   UpdateClientUsecase,
 } from 'src/application/usecases';
 import { ClientEntity } from 'src/domain/entities';
-import { DeepPartial, UpdateResult } from 'typeorm';
+import { UpdateResult } from 'typeorm';
 
 @Controller('client')
 export class ClientController {
@@ -19,6 +20,8 @@ export class ClientController {
     private readonly selectClientUsecase: SelectClientUsecase,
     private readonly createClientUsecase:CreateClientUsecase,
     private readonly archiveUnarchiveClientUsecase: ArchiveUnarchiveClientUsecase,
+    private readonly createClientUsecase: CreateClientUsecase,
+    private readonly getClientByIdUsecase: GetClientByIdUsecase,
   ) {}
 
   @Get()
@@ -39,7 +42,12 @@ export class ClientController {
     return this.archiveUnarchiveClientUsecase.process(data, user);
   }
 
-  @Patch('update/:id')
+  @Get(':id')
+  getById(@Param('id') clientid: string) {
+    return this.getClientByIdUsecase.process(clientid);
+  }
+
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() data: Partial<ClientEntity>,
@@ -49,10 +57,7 @@ export class ClientController {
   }
 
   @Post()
-  create(
-    @GetUser() user: AuthUserDto,
-    @Body() data: Partial<ClientEntity>,
-  ) {
+  create(@GetUser() user: AuthUserDto, @Body() data: Partial<ClientEntity>) {
     data.created_by = user.id;
     return this.createClientUsecase.process(data);
   }
