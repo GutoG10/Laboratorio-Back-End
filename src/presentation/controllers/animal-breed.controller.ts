@@ -5,6 +5,7 @@ import {
   CreateAnimalBreedUsecase,
   SelectAnimalBreedUsecase,
   UpdateAnimalBreedUsecase,
+  ArchiveUnarchiveAnimalBreedUsecase,
 } from 'src/application/usecases';
 import { GetUser } from 'src/common/user';
 import { AnimalBreedEntity, AnimalSpecieEntity } from 'src/domain/entities';
@@ -17,6 +18,7 @@ export class AnimalBreedController {
     private readonly getAllAnimalBreedUsecase: GetAllAnimalBreedUsecase,
     private readonly selectAnimalBreedUsecase: SelectAnimalBreedUsecase,
     private readonly updateAnimalBreedUsecase: UpdateAnimalBreedUsecase,
+    private readonly archiveUnarchiveAnimalBreedUsecase: ArchiveUnarchiveAnimalBreedUsecase,
   ) {}
 
   @Get()
@@ -27,6 +29,14 @@ export class AnimalBreedController {
   @Get('select/:specie_id')
   getAllForSelect(@Param('specie_id') specie: string) {
     return this.selectAnimalBreedUsecase.process(specie);
+  }
+
+  @Patch()
+  archiveUnarchive(
+    @GetUser() user: AuthUserDto, 
+    @Body() data: { id: string, archived: boolean }
+  ): Promise<UpdateResult>{
+    return this.archiveUnarchiveAnimalBreedUsecase.process(data, user);
   }
 
   @Patch('update/:id')
