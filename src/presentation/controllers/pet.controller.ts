@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
   ArchiveUnarchivePetUsecase,
@@ -19,8 +19,8 @@ export class PetController {
     private readonly getAllPetUsecase: GetAllPetUsecase,
     private readonly selectPetUsecase: SelectPetUsecase,
     private readonly updatePetUsecase: UpdatePetUsecase,
-    private readonly archiveUnarchivePetUsecase: ArchiveUnarchivePetUsecase
-    private readonly getPetByIdUsecase: GetPetByIdUsecase
+    private readonly archiveUnarchivePetUsecase: ArchiveUnarchivePetUsecase,
+    private readonly getPetByIdUsecase: GetPetByIdUsecase,
   ) {}
 
   @Get()

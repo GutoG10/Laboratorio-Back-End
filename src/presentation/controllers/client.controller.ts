@@ -2,7 +2,7 @@ import { GetClientByIdUsecase } from './../../application/usecases/get-client-by
 import { GetUser } from 'src/common/user';
 import { AuthUserDto } from 'src/application/dto';
 import { CreateClientUsecase } from './../../application/usecases/create-client.usecase';
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import {
   ArchiveUnarchiveClientUsecase,
   GetAllClientUsecase,
@@ -18,7 +18,6 @@ export class ClientController {
     private readonly getAllClientUsecase: GetAllClientUsecase,
     private readonly updateClientUsecase: UpdateClientUsecase,
     private readonly selectClientUsecase: SelectClientUsecase,
-    private readonly createClientUsecase:CreateClientUsecase,
     private readonly archiveUnarchiveClientUsecase: ArchiveUnarchiveClientUsecase,
     private readonly createClientUsecase: CreateClientUsecase,
     private readonly getClientByIdUsecase: GetClientByIdUsecase,
