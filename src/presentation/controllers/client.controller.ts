@@ -4,6 +4,7 @@ import { AuthUserDto } from 'src/application/dto';
 import { CreateClientUsecase } from './../../application/usecases/create-client.usecase';
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import {
+  ArchiveUnarchiveClientUsecase,
   GetAllClientUsecase,
   SelectClientUsecase,
   UpdateClientUsecase,
@@ -17,6 +18,8 @@ export class ClientController {
     private readonly getAllClientUsecase: GetAllClientUsecase,
     private readonly updateClientUsecase: UpdateClientUsecase,
     private readonly selectClientUsecase: SelectClientUsecase,
+    private readonly createClientUsecase:CreateClientUsecase,
+    private readonly archiveUnarchiveClientUsecase: ArchiveUnarchiveClientUsecase,
     private readonly createClientUsecase: CreateClientUsecase,
     private readonly getClientByIdUsecase: GetClientByIdUsecase,
   ) {}
@@ -29,6 +32,14 @@ export class ClientController {
   @Get('select')
   getAllForSelect() {
     return this.selectClientUsecase.process();
+  }
+
+  @Patch()
+  archiveUnarchive(
+    @GetUser() user: AuthUserDto, 
+    @Body() data: { id: string, archived: boolean }
+  ): Promise<UpdateResult>{
+    return this.archiveUnarchiveClientUsecase.process(data, user);
   }
 
   @Get(':id')

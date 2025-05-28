@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
+  ArchiveUnarchivePetUsecase,
   CreatePetUsecase,
   GetAllPetUsecase,
   SelectPetUsecase,
@@ -18,6 +19,7 @@ export class PetController {
     private readonly getAllPetUsecase: GetAllPetUsecase,
     private readonly selectPetUsecase: SelectPetUsecase,
     private readonly updatePetUsecase: UpdatePetUsecase,
+    private readonly archiveUnarchivePetUsecase: ArchiveUnarchivePetUsecase
     private readonly getPetByIdUsecase: GetPetByIdUsecase
   ) {}
 
@@ -40,6 +42,14 @@ export class PetController {
   create(@GetUser() user: AuthUserDto, @Body() data: Partial<PetEntity>) {
     data.created_by = user.id;
     return this.createPetUsecase.process(data);
+  }
+
+  @Patch()
+  archiveUnarchive(
+    @GetUser() user: AuthUserDto, 
+    @Body() data: { id: string, archived: boolean }
+  ): Promise<UpdateResult>{
+    return this.archiveUnarchivePetUsecase.process(data, user);
   }
 
   @Put(':id')

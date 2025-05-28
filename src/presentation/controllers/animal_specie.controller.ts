@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
+  ArchiveUnarchiveAnimalSpecieUsecase,
   CreateAnimalSpecieUsecase,
   GetAllAnimalSpecieByNameUsecase,
   GetAllAnimalSpecieUsecase,
@@ -29,6 +30,7 @@ export class AnimalSpecieController {
     private readonly getAllAnimalSpecieByNameUsecase: GetAllAnimalSpecieByNameUsecase,
     private readonly selectAnimalSpecieUsecase: SelectAnimalSpecieUsecase,
     private readonly updateAnimalSpecieUsecase: UpdateAnimalSpecieUsecase,
+    private readonly archiveUnarchiveAnimalSpecieUsecase: ArchiveUnarchiveAnimalSpecieUsecase,
     private readonly getAnimalSpecieByIdUsecase: GetAnimalSpecieByIdUsecase,
   ) {}
 
@@ -50,6 +52,14 @@ export class AnimalSpecieController {
     return this.getAllAnimalSpecieByNameUsecase.process(search, archived);
   }
 
+  @Patch()
+  archiveUnarchive(
+    @GetUser() user: AuthUserDto, 
+    @Body() data: { id: string, archived: boolean }
+  ): Promise<UpdateResult>{
+    return this.archiveUnarchiveAnimalSpecieUsecase.process(data, user);
+  }
+  
   @Get(':id')
   getById(@Param('id') animalSpecieId: string) {
     return this.getAnimalSpecieByIdUsecase.process(animalSpecieId);
