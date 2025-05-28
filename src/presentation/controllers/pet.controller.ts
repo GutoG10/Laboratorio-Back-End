@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
   CreatePetUsecase,
@@ -6,6 +6,7 @@ import {
   SelectPetUsecase,
   UpdatePetUsecase,
 } from 'src/application/usecases';
+import { GetPetByIdUsecase } from 'src/application/usecases/get-pet-by-id.usecase';
 import { GetUser } from 'src/common/user';
 import { PetEntity } from 'src/domain/entities/pet.entity';
 import { UpdateResult } from 'typeorm';
@@ -17,11 +18,17 @@ export class PetController {
     private readonly getAllPetUsecase: GetAllPetUsecase,
     private readonly selectPetUsecase: SelectPetUsecase,
     private readonly updatePetUsecase: UpdatePetUsecase,
+    private readonly getPetByIdUsecase: GetPetByIdUsecase
   ) {}
 
   @Get()
   getAll() {
     return this.getAllPetUsecase.process();
+  }
+
+  @Get(':id')
+  getById(@Param('id') petId: string) {
+    return this.getPetByIdUsecase.process(petId);
   }
 
   @Get('select')
@@ -30,10 +37,7 @@ export class PetController {
   }
 
   @Post()
-  create(
-    @GetUser() user: AuthUserDto,
-    @Body() data: Partial<PetEntity>
-  ) {
+  create(@GetUser() user: AuthUserDto, @Body() data: Partial<PetEntity>) {
     data.created_by = user.id;
     return this.createPetUsecase.process(data);
   }

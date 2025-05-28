@@ -1,3 +1,4 @@
+import { GetAnimalBreedByIdUsecase } from './../../application/usecases/get-animal-breed-by-id.usecase';
 import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { AuthUserDto } from 'src/application/dto';
 import {
@@ -17,11 +18,17 @@ export class AnimalBreedController {
     private readonly getAllAnimalBreedUsecase: GetAllAnimalBreedUsecase,
     private readonly selectAnimalBreedUsecase: SelectAnimalBreedUsecase,
     private readonly updateAnimalBreedUsecase: UpdateAnimalBreedUsecase,
+    private readonly getAnimalBreedByIdUsecase: GetAnimalBreedByIdUsecase,
   ) {}
 
   @Get()
   getAll() {
     return this.getAllAnimalBreedUsecase.process();
+  }
+
+  @Get(':id')
+  getById(@Param('id') animalBreedId: string) {
+    return this.getAnimalBreedByIdUsecase.process(animalBreedId);
   }
 
   @Get('select/:specie_id')
@@ -31,19 +38,19 @@ export class AnimalBreedController {
 
   @Put(':id')
   update(
-    @GetUser() user: AuthUserDto, 
-    @Param('id') id: string, 
-    @Body() data: Partial<AnimalBreedEntity>
-  ): Promise<UpdateResult>{
+    @GetUser() user: AuthUserDto,
+    @Param('id') id: string,
+    @Body() data: Partial<AnimalBreedEntity>,
+  ): Promise<UpdateResult> {
     return this.updateAnimalBreedUsecase.process(id, data, user);
   }
 
   @Post()
   create(
     @GetUser() user: AuthUserDto,
-    @Body() data: Partial<AnimalBreedEntity>
+    @Body() data: Partial<AnimalBreedEntity>,
   ) {
-    data.created_by = user.id
+    data.created_by = user.id;
     return this.createAnimalBreedUsecase.process(data);
   }
 }

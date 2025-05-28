@@ -52,8 +52,7 @@ export class AnimalSpecieController {
 
   @Get(':id')
   getById(@Param('id') animalSpecieId: string) {
-    console.log('getById')
-    return this.getAnimalSpecieByIdUsecase.process(animalSpecieId)
+    return this.getAnimalSpecieByIdUsecase.process(animalSpecieId);
   }
 
   @Put(':id')

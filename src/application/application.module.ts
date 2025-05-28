@@ -1,27 +1,30 @@
 import { Module } from '@nestjs/common';
-import { CreateUserUsecase } from './usecases/create-user.usecase';
 import { InfraModule } from 'src/infrastructure/infra.module';
 import {
-  GetAllAnimalSpecieUsecase,
-  CreateAnimalSpecieUsecase,
   CreateAnimalBreedUsecase,
-  GetAllAnimalBreedUsecase,
-  GetAllClientUsecase,
+  CreateAnimalSpecieUsecase,
   CreateClientUsecase,
   CreatePetUsecase,
-  GetAllPetUsecase,
+  CreateUserUsecase,
+  GetAllAnimalBreedUsecase,
   GetAllAnimalSpecieByNameUsecase,
+  GetAllAnimalSpecieUsecase,
+  GetAllClientUsecase,
+  GetAllPetUsecase,
+  GetAnimalBreedByIdUsecase,
+  GetAnimalSpecieByIdUsecase,
+  GetClientByIdUsecase,
+  GetPetByIdUsecase,
   SelectAnimalBreedUsecase,
   SelectAnimalSpecieUsecase,
   SelectClientUsecase,
   SelectPetUsecase,
   SelectUserUsecase,
-  UpdateAnimalSpecieUsecase,
   UpdateAnimalBreedUsecase,
-  UpdateUserUsecase,
-  UpdatePetUsecase,
+  UpdateAnimalSpecieUsecase,
   UpdateClientUsecase,
-  GetAnimalSpecieByIdUsecase,
+  UpdatePetUsecase,
+  UpdateUserUsecase,
 } from './usecases';
 
 @Module({
@@ -48,6 +51,9 @@ import {
     UpdatePetUsecase,
     UpdateClientUsecase,
     GetAnimalSpecieByIdUsecase,
+    GetAnimalBreedByIdUsecase,
+    GetPetByIdUsecase,
+    GetClientByIdUsecase
   ],
   exports: [
     GetAllClientUsecase,
@@ -71,6 +77,9 @@ import {
     UpdatePetUsecase,
     UpdateClientUsecase,
     GetAnimalSpecieByIdUsecase,
+    GetAnimalBreedByIdUsecase,
+    GetPetByIdUsecase,
+    GetClientByIdUsecase
   ],
 })
 export class ApplicationModule {}
