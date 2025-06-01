@@ -8,7 +8,11 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { UserEntity } from './user.entity';
-import { AnimalBreedEntity, AnimalSpecieEntity, ClientEntity } from 'src/domain/entities';
+import {
+  AnimalBreedEntity,
+  AnimalSpecieEntity,
+  ClientEntity,
+} from 'src/domain/entities';
 
 @Entity('pet')
 export class PetEntity extends BaseEntity {
@@ -29,6 +33,9 @@ export class PetEntity extends BaseEntity {
 
   @Column({ type: 'numeric', nullable: true })
   weight: Decimal128;
+
+  @Column({ type: 'varchar', length: 1000, nullable: true })
+  notes: string;
 
   @CreateDateColumn({ type: 'uuid' })
   created_by: string;

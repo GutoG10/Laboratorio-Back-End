@@ -25,6 +25,9 @@ export class ClientEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 255 })
   address: string;
 
+  @Column({ type: 'varchar', length: 1000, nullable: true })
+  notes: string;
+
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
 

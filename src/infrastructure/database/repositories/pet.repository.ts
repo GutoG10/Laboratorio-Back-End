@@ -51,8 +51,6 @@ export class PetRepository extends BaseRepository<PetEntity> {
         'client.id',
         'client.name',
         'client.last_name'
-
-
       ])
       .getMany();
   }
