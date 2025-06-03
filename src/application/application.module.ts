@@ -29,6 +29,13 @@ import {
   ArchiveUnarchiveClientUsecase,
   UpdatePetUsecase,
   UpdateUserUsecase,
+  GetAllMedicUsecase,
+  UpdateMedicUsecase,
+  SelectMedicUsecase,
+  ArchiveUnarchiveMedicUsecase,
+  CreateMedicUsecase,
+  GetMedicByIdUsecase
+
 } from './usecases';
 
 @Module({
@@ -62,7 +69,14 @@ import {
     GetAnimalSpecieByIdUsecase,
     GetAnimalBreedByIdUsecase,
     GetPetByIdUsecase,
-    GetClientByIdUsecase
+    GetClientByIdUsecase,
+
+    GetAllMedicUsecase,
+    UpdateMedicUsecase,
+    SelectMedicUsecase,
+    ArchiveUnarchiveMedicUsecase,
+    CreateMedicUsecase,
+    GetMedicByIdUsecase
   ],
   exports: [
     GetAllClientUsecase,
@@ -92,7 +106,13 @@ import {
     GetAnimalSpecieByIdUsecase,
     GetAnimalBreedByIdUsecase,
     GetPetByIdUsecase,
-    GetClientByIdUsecase
+    GetClientByIdUsecase,
+    GetAllMedicUsecase,
+    UpdateMedicUsecase,
+    SelectMedicUsecase,
+    ArchiveUnarchiveMedicUsecase,
+    CreateMedicUsecase,
+    GetMedicByIdUsecase
   ],
 })
 export class ApplicationModule {}
