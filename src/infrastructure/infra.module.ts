@@ -4,6 +4,7 @@ import {
   UserEntity,
   AnimalBreedEntity,
   AnimalSpecieEntity,
+  MedicEntity,
 } from 'src/domain/entities';
 import { BaseRepository } from 'src/infrastructure/database/base';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -12,6 +13,7 @@ import {
   AnimalBreedRepository,
   ClientRepository,
   UserRepository,
+  MedicRepository,
 } from './database/repositories/';
 import { PetEntity } from 'src/domain/entities/pet.entity';
 import { PetRepository } from './database/repositories/pet.repository';
@@ -24,6 +26,7 @@ import { PetRepository } from './database/repositories/pet.repository';
       ClientEntity,
       AnimalBreedEntity,
       PetEntity,
+      MedicEntity,
     ]),
   ],
   providers: [
@@ -52,6 +55,11 @@ import { PetRepository } from './database/repositories/pet.repository';
       provide: BaseRepository<PetEntity>,
       useClass: PetRepository,
     },
+    MedicRepository,
+    {
+      provide: BaseRepository<MedicEntity>,
+      useClass: MedicRepository,
+    },
   ],
   exports: [
     UserRepository,
@@ -59,6 +67,7 @@ import { PetRepository } from './database/repositories/pet.repository';
     AnimalSpecieRepository,
     AnimalBreedRepository,
     PetRepository,
+    MedicRepository,
   ],
 })
 export class InfraModule {}

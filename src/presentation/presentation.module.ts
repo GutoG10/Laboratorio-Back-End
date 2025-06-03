@@ -4,7 +4,8 @@ import {
   AnimalSpecieController,
   ClientController,
   AnimalBreedController,
-  PetController
+  PetController,
+  MedicController,
 } from './controllers';
 import { ApplicationModule } from 'src/application/application.module';
 
@@ -16,7 +17,8 @@ import { ApplicationModule } from 'src/application/application.module';
     ClientController,
     AnimalBreedController,
     PetController,
- ],
+    MedicController,
+  ],
   exports: [PresentationModule],
 })
 export class PresentationModule {}
