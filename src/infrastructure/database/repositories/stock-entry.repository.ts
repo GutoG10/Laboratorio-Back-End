@@ -17,7 +17,7 @@ export class StockEntryRepository extends BaseRepository<StockEntryEntity> {
     return this._repository
     .createQueryBuilder('stockEntry')
     .leftJoinAndSelect('stockEntry.rawMaterial', 'rawMaterial')
-    //.leftJoinAndSelect('stockEntry.supplier', 'supplier')
+    .leftJoinAndSelect('stockEntry.supplier', 'supplier')
     .leftJoinAndSelect('stockEntry.archivedBy', 'archived')
     .leftJoinAndSelect('stockEntry.createdBy', 'creator')
     .leftJoinAndSelect('stockEntry.editedBy', 'editor')
@@ -35,10 +35,10 @@ export class StockEntryRepository extends BaseRepository<StockEntryEntity> {
       'rawMaterial.is_refrigerated',
       'rawMaterial.therapeutic_class',
       'rawMaterial.notes',
-    //'supplier.id',
-    //'supplier.name',
-    //'supplier.email',
-    //'supplier.address',
+      'supplier.id',
+      'supplier.name',
+      'supplier.email',
+      'supplier.address',
       'stockEntry.created_at',
       'creator.id',
       'creator.name',

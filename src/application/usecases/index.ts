@@ -58,3 +58,11 @@ export * from './get-all-stock-entry.usecase';
 export * from './update-stock-entry.usecase';
 export * from './archive-unarchive-stock-entry.usecase';
 export * from './get-stock-entry-by-id.usecase';
+
+//SUPPLIER
+export * from './create-supplier.usecase';
+export * from './get-all-supplier.usecase';
+export * from './select-supplier.usecase';
+export * from './update-supplier.usecase';
+export * from './archive-unarchive-supplier.usecase';
+export * from './get-supplier-by-id.usecase';

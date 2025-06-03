@@ -2,6 +2,7 @@ import { BaseEntity } from "src/infrastructure/database/base";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne } from "typeorm";
 import { UserEntity } from "./user.entity";
 import { RawMaterialEntity } from "./raw-material.entity";
+import { SupplierEntity } from "./supplier.entity";
 
 @Entity('stock_entry')
 export class StockEntryEntity extends BaseEntity {
@@ -58,7 +59,7 @@ export class StockEntryEntity extends BaseEntity {
     @JoinColumn([{ name: 'raw_material_id', referencedColumnName: 'id' }])
     rawMaterial: RawMaterialEntity;
 
-    // @ManyToOne(() => SupplierEntity)
-    // @JoinColumn([{ name: 'supplier_id', referencedColumnName: 'id' }])
-    // supplier: SupplierEntity;
+    @ManyToOne(() => SupplierEntity)
+    @JoinColumn([{ name: 'supplier_id', referencedColumnName: 'id' }])
+    supplier: SupplierEntity;
 }

@@ -45,8 +45,13 @@ import {
   GetAllStockEntryUsecase,
   GetStockEntryByIdUsecase,
   UpdateStockEntryUsecase,
-  ArchiveUnarchiveStockEntryUsecase
-
+  ArchiveUnarchiveStockEntryUsecase,
+  CreateSupplierUsecase,
+  GetAllSupplierUsecase,
+  GetSupplierByIdUsecase,
+  UpdateSupplierUsecase,
+  SelectSupplierUsecase,
+  ArchiveUnarchiveSupplierUsecase,
 } from './usecases';
 
 @Module({
@@ -97,6 +102,12 @@ import {
     GetStockEntryByIdUsecase,
     UpdateStockEntryUsecase,
     ArchiveUnarchiveStockEntryUsecase,
+    CreateSupplierUsecase,
+    GetAllSupplierUsecase,
+    GetSupplierByIdUsecase,
+    UpdateSupplierUsecase,
+    SelectSupplierUsecase,
+    ArchiveUnarchiveSupplierUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -144,6 +155,12 @@ import {
     GetStockEntryByIdUsecase,
     UpdateStockEntryUsecase,
     ArchiveUnarchiveStockEntryUsecase,
+    CreateSupplierUsecase,
+    GetAllSupplierUsecase,
+    GetSupplierByIdUsecase,
+    UpdateSupplierUsecase,
+    SelectSupplierUsecase,
+    ArchiveUnarchiveSupplierUsecase,
   ],
 })
 export class ApplicationModule {}

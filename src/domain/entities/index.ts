@@ -6,3 +6,4 @@ export * from './pet.entity'
 export * from './medic.entity';
 export * from './raw-material.entity';
 export * from './stock-entry.entity';
+export * from './supplier.entity';

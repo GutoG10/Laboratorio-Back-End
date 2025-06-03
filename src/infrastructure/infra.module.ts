@@ -7,6 +7,7 @@ import {
   MedicEntity,
   RawMaterialEntity,
   StockEntryEntity,
+  SupplierEntity,
 } from 'src/domain/entities';
 import { BaseRepository } from 'src/infrastructure/database/base';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -18,6 +19,7 @@ import {
   MedicRepository,
   RawMaterialRepository,
   StockEntryRepository,
+  SupplierRepository,
 } from './database/repositories/';
 import { PetEntity } from 'src/domain/entities/pet.entity';
 import { PetRepository } from './database/repositories/pet.repository';
@@ -33,6 +35,7 @@ import { PetRepository } from './database/repositories/pet.repository';
       MedicEntity,
       RawMaterialEntity,
       StockEntryEntity,
+      SupplierEntity,
     ]),
   ],
   providers: [
@@ -75,7 +78,12 @@ import { PetRepository } from './database/repositories/pet.repository';
     {
       provide: BaseRepository<StockEntryEntity>,
       useClass: StockEntryRepository,
-    }
+    },
+    SupplierRepository,
+    {
+      provide: BaseRepository<SupplierEntity>,
+      useClass: SupplierRepository, 
+    },
   ],
   exports: [
     UserRepository,
@@ -86,6 +94,7 @@ import { PetRepository } from './database/repositories/pet.repository';
     MedicRepository,
     RawMaterialRepository,
     StockEntryRepository,
+    SupplierRepository,
   ],
 })
 export class InfraModule {}
