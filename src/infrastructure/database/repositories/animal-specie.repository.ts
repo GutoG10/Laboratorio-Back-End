@@ -31,6 +31,7 @@ export class AnimalSpecieRepository extends BaseRepository<AnimalSpecieEntity> {
     return this._repository
       .createQueryBuilder('animal_specie')
       .select(['animal_specie.id', 'animal_specie.name'])
+      .where('animal_specie.archived = false')
       .getMany();
   }
 

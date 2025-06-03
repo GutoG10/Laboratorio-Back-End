@@ -26,6 +26,7 @@ export class UserRepository extends BaseRepository<UserEntity> {
     return this._repository
       .createQueryBuilder('user')
       .select(['user.id', 'user.name'])
+      .where('user.archived = false')
       .getMany();
   }
 

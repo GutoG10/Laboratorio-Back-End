@@ -58,6 +58,7 @@ export class AnimalBreedRepository extends BaseRepository<AnimalBreedEntity> {
       .createQueryBuilder('animal_breed')
       .select(['animal_breed.id', 'animal_breed.name'])
       .where('animal_breed.animal_specie_id = :specie', { specie })
+      .andWhere('animal_breed.archived = false')
       .getMany();
   }
 }

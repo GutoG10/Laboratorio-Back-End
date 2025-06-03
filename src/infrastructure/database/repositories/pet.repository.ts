@@ -16,6 +16,7 @@ export class PetRepository extends BaseRepository<PetEntity> {
     return this._repository
       .createQueryBuilder('pet')
       .select(['pet.id', 'pet.name'])
+      .where('pet.archived = false')
       .getMany();
   }
 

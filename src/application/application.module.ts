@@ -34,7 +34,18 @@ import {
   SelectMedicUsecase,
   ArchiveUnarchiveMedicUsecase,
   CreateMedicUsecase,
-  GetMedicByIdUsecase
+  GetMedicByIdUsecase,
+  CreateRawMaterialUsecase,
+  GetAllRawMaterialUsecase,
+  GetRawMaterialByIdUsecase,
+  UpdateRawMaterialUsecase,
+  SelectRawMaterialUsecase,
+  ArchiveUnarchiveRawMaterialUsecase,
+  CreateStockEntryUsecase,
+  GetAllStockEntryUsecase,
+  GetStockEntryByIdUsecase,
+  UpdateStockEntryUsecase,
+  ArchiveUnarchiveStockEntryUsecase
 
 } from './usecases';
 
@@ -61,7 +72,6 @@ import {
     UpdateUserUsecase,
     UpdatePetUsecase,
     UpdateClientUsecase,
-
     ArchiveUnarchiveAnimalSpecieUsecase,
     ArchiveUnarchivePetUsecase,
     ArchiveUnarchiveAnimalBreedUsecase,
@@ -70,13 +80,23 @@ import {
     GetAnimalBreedByIdUsecase,
     GetPetByIdUsecase,
     GetClientByIdUsecase,
-
     GetAllMedicUsecase,
     UpdateMedicUsecase,
     SelectMedicUsecase,
     ArchiveUnarchiveMedicUsecase,
     CreateMedicUsecase,
-    GetMedicByIdUsecase
+    GetMedicByIdUsecase,
+    CreateRawMaterialUsecase,
+    GetAllRawMaterialUsecase,
+    GetRawMaterialByIdUsecase,
+    UpdateRawMaterialUsecase,
+    SelectRawMaterialUsecase,
+    ArchiveUnarchiveRawMaterialUsecase,
+    CreateStockEntryUsecase,
+    GetAllStockEntryUsecase,
+    GetStockEntryByIdUsecase,
+    UpdateStockEntryUsecase,
+    ArchiveUnarchiveStockEntryUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -112,7 +132,18 @@ import {
     SelectMedicUsecase,
     ArchiveUnarchiveMedicUsecase,
     CreateMedicUsecase,
-    GetMedicByIdUsecase
+    GetMedicByIdUsecase,
+    CreateRawMaterialUsecase,
+    GetAllRawMaterialUsecase,
+    GetRawMaterialByIdUsecase,
+    UpdateRawMaterialUsecase,
+    SelectRawMaterialUsecase,
+    ArchiveUnarchiveRawMaterialUsecase,
+    CreateStockEntryUsecase,
+    GetAllStockEntryUsecase,
+    GetStockEntryByIdUsecase,
+    UpdateStockEntryUsecase,
+    ArchiveUnarchiveStockEntryUsecase,
   ],
 })
 export class ApplicationModule {}

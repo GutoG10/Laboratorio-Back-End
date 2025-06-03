@@ -10,6 +10,13 @@ export class ArchiveUnarchiveMedicUsecase {
     ){}
     async process(data: { id: string, archived: boolean}, user: AuthUserDto): Promise<UpdateResult> {
         const { id, archived } = data;
-        return this.repository.update(id, { archived: archived, archived_by: user.id, archived_at: new Date()})
+        if(archived)
+        {
+            return this.repository.update(id, { archived: archived, archived_by: user.id, archived_at: new Date()})
+        }
+        else
+        {
+            return this.repository.update(id, { archived: archived})
+        }
     }
 }

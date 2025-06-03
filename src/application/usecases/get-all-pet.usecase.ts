@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { PetRepository } from 'src/infrastructure/database/repositories/pet.repository';
+import { PetEntity } from 'src/domain/entities';
+import { PetRepository } from 'src/infrastructure/database/repositories';
 
 @Injectable()
 export class GetAllPetUsecase {
   constructor(private readonly repository: PetRepository) {}
 
-  async process() {
+  async process(): Promise<PetEntity[]> {
     return this.repository.findWithRelations();
   }
 }

@@ -33,6 +33,7 @@ async findWithRelations(): Promise<MedicEntity[]> {
     return this._repository
       .createQueryBuilder('medic')
       .select(['medic.id', 'medic.name', 'medic.last_name']) 
+      .where('medic.archived = false')
       .getMany();
   }
 }
