@@ -5,6 +5,8 @@ import {
   AnimalBreedEntity,
   AnimalSpecieEntity,
   MedicEntity,
+  RawMaterialEntity,
+  StockEntryEntity,
 } from 'src/domain/entities';
 import { BaseRepository } from 'src/infrastructure/database/base';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -14,6 +16,8 @@ import {
   ClientRepository,
   UserRepository,
   MedicRepository,
+  RawMaterialRepository,
+  StockEntryRepository,
 } from './database/repositories/';
 import { PetEntity } from 'src/domain/entities/pet.entity';
 import { PetRepository } from './database/repositories/pet.repository';
@@ -27,6 +31,8 @@ import { PetRepository } from './database/repositories/pet.repository';
       AnimalBreedEntity,
       PetEntity,
       MedicEntity,
+      RawMaterialEntity,
+      StockEntryEntity,
     ]),
   ],
   providers: [
@@ -60,6 +66,16 @@ import { PetRepository } from './database/repositories/pet.repository';
       provide: BaseRepository<MedicEntity>,
       useClass: MedicRepository,
     },
+    RawMaterialRepository,
+    {
+      provide: BaseRepository<RawMaterialEntity>,
+      useClass: RawMaterialRepository,
+    },
+    StockEntryRepository,
+    {
+      provide: BaseRepository<StockEntryEntity>,
+      useClass: StockEntryRepository,
+    }
   ],
   exports: [
     UserRepository,
@@ -68,6 +84,8 @@ import { PetRepository } from './database/repositories/pet.repository';
     AnimalBreedRepository,
     PetRepository,
     MedicRepository,
+    RawMaterialRepository,
+    StockEntryRepository,
   ],
 })
 export class InfraModule {}

@@ -43,3 +43,18 @@ export * from './select-medic.usecase';
 export * from './update-medic.usecase';
 export * from './archive-unarchive-medic.usecase';
 export * from './get-medic-by-id.usecase';
+
+//RAW MATERIAL
+export * from './create-raw-material.usecase';
+export * from './get-all-raw-material.usecase';
+export* from './select-raw-material.usecase';
+export * from './update-raw-material.usecase';
+export * from './archive-unarchive-raw-material.usecase';
+export * from './get-raw-material-by-id.usecase';
+
+//STOCK ENTRY
+export * from './create-stock-entry.usecase'
+export * from './get-all-stock-entry.usecase';
+export * from './update-stock-entry.usecase';
+export * from './archive-unarchive-stock-entry.usecase';
+export * from './get-stock-entry-by-id.usecase';

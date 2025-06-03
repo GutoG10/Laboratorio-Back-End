@@ -30,7 +30,8 @@ export class ClientRepository extends BaseRepository<ClientEntity> {
   async getAllForSelect(): Promise<Partial<ClientEntity[]>> {
     return this._repository
       .createQueryBuilder('client')
-      .select(['client.id', 'client.name', 'client.last_name']) 
+      .select(['client.id', 'client.name', 'client.last_name'])
+      .where('client.archived = false')
       .getMany();
   }
 }

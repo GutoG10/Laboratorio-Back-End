@@ -1,12 +1,12 @@
-import { PetRepository } from "src/infrastructure/database/repositories";
+import { RawMaterialRepository } from "src/infrastructure/database/repositories";
 import { AuthUserDto } from "../dto";
 import { UpdateResult } from "typeorm";
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
-export class ArchiveUnarchivePetUsecase {
+export class ArchiveUnarchiveRawMaterialUsecase {
     constructor(
-        private readonly repository: PetRepository
+        private readonly repository: RawMaterialRepository
     ){}
     async process(data: { id: string, archived: boolean}, user: AuthUserDto): Promise<UpdateResult> {
         const { id, archived } = data;

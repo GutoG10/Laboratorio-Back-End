@@ -4,3 +4,5 @@ export * from './client.entity';
 export * from './animal-breed.entity';
 export * from './pet.entity'
 export * from './medic.entity';
+export * from './raw-material.entity';
+export * from './stock-entry.entity';
