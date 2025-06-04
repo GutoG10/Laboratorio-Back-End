@@ -19,9 +19,6 @@ export class RawMaterialEntity extends BaseEntity {
     @Column({ type: 'enum', enum: UnitEnum, nullable: false })
     unit: UnitEnum;
 
-    @Column({ type: 'varchar', length: 10, nullable: false })
-    crmv: string;
-
     @Column({ type: 'bool', default: false, nullable: true })
     is_refrigerated: boolean;
 
