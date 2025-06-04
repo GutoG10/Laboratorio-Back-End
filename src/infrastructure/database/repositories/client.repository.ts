@@ -7,7 +7,8 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class ClientRepository extends BaseRepository<ClientEntity> {
   constructor(
-    @InjectRepository(ClientEntity) private _repository: Repository<ClientEntity>,
+    @InjectRepository(ClientEntity)
+    private _repository: Repository<ClientEntity>,
   ) {
     super(_repository);
   }
@@ -15,6 +16,9 @@ export class ClientRepository extends BaseRepository<ClientEntity> {
   async findWithRelations(): Promise<ClientEntity[]> {
     return this._repository
       .createQueryBuilder('client')
+      .leftJoinAndSelect('client.createdBy', 'creator')
+      .leftJoinAndSelect('client.editedBy', 'editor')
+      .leftJoinAndSelect('client.archivedBy', 'archiver')
       .select([
         'client.id',
         'client.name',
@@ -22,8 +26,20 @@ export class ClientRepository extends BaseRepository<ClientEntity> {
         'client.email',
         'client.phone',
         'client.archived',
+        'client.created_at',
+        'client.edited_at',
+        'client.archived_at',
+        'creator.id',
+        'creator.name',
+        'creator.last_name',
+        'editor.id',
+        'editor.name',
+        'editor.last_name',
+        'archiver.id',
+        'archiver.name',
+        'archiver.last_name',
       ])
-      .orderBy('client.name', 'ASC') 
+      .orderBy('client.name', 'ASC')
       .getMany();
   }
 
