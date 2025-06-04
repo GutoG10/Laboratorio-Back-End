@@ -22,6 +22,7 @@ export class MedicRepository extends BaseRepository<MedicEntity> {
         'medic.id',
         'medic.name',
         'medic.last_name',
+        'medic.crmv',
         'medic.email',
         'medic.created_at',
         'medic.edited_at',
