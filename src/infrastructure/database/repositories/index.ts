@@ -6,3 +6,4 @@ export * from './pet.repository'
 export * from './medic.repository';
 export * from './raw-material.repository';
 export * from './stock-entry.repository';
+export * from './supplier.repository';

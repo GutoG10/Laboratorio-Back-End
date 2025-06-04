@@ -6,3 +6,4 @@ export * from './pet.controller';
 export * from './medic.controller';
 export * from './raw_material.controller';
 export * from './stock-entry.controller';
+export * from './supplier.controller';
