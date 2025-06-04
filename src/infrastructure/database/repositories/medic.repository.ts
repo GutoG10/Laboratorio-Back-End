@@ -12,27 +12,39 @@ export class MedicRepository extends BaseRepository<MedicEntity> {
     super(_repository);
   }
 
-async findWithRelations(): Promise<MedicEntity[]> {
-  return this._repository
-    .createQueryBuilder('medic')
-    .select([
-      'medic.id',
-      'medic.name',
-      'medic.last_name',
-      'medic.email',
-      'medic.created_at',
-      'medic.edited_at',
-      'medic.archived_at',  
-      'medic.archived', 
-    ])
-    .orderBy('medic.name', 'ASC')
-    .getMany();
-}
+  async findWithRelations(): Promise<MedicEntity[]> {
+    return this._repository
+      .createQueryBuilder('medic')
+      .leftJoinAndSelect('medic.createdBy', 'creator')
+      .leftJoinAndSelect('medic.editedBy', 'editor')
+      .leftJoinAndSelect('medic.archivedBy', 'archiver')
+      .select([
+        'medic.id',
+        'medic.name',
+        'medic.last_name',
+        'medic.email',
+        'medic.created_at',
+        'medic.edited_at',
+        'medic.archived_at',
+        'medic.archived',
+        'creator.id',
+        'creator.name',
+        'creator.last_name',
+        'editor.id',
+        'editor.name',
+        'editor.last_name',
+        'archiver.id',
+        'archiver.name',
+        'archiver.last_name',
+      ])
+      .orderBy('medic.name', 'ASC')
+      .getMany();
+  }
 
   async getAllForSelect(): Promise<Partial<MedicEntity[]>> {
     return this._repository
       .createQueryBuilder('medic')
-      .select(['medic.id', 'medic.name', 'medic.last_name']) 
+      .select(['medic.id', 'medic.name', 'medic.last_name'])
       .where('medic.archived = false')
       .getMany();
   }
