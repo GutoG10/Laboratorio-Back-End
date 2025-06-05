@@ -51,6 +51,7 @@ export* from './select-raw-material.usecase';
 export * from './update-raw-material.usecase';
 export * from './archive-unarchive-raw-material.usecase';
 export * from './get-raw-material-by-id.usecase';
+export * from './check-raw-material-name.usecase';
 
 //STOCK ENTRY
 export * from './create-stock-entry.usecase'
