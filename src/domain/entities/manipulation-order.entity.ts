@@ -1,32 +1,25 @@
 import { BaseEntity } from "src/infrastructure/database/base";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { TypeEnum } from "../enum";
 import { UserEntity } from "./user.entity";
-import { RawMaterialEntity } from "./raw-material.entity";
-import { SupplierEntity } from "./supplier.entity";
 
-@Entity('stock_entry')
-export class StockEntryEntity extends BaseEntity {
+@Entity('manipulation_order')
+export class ManipulationOrderEntity extends BaseEntity {
     
-    @Column({ type: 'uuid' })
-    raw_material_id: string;
+    @Column({ type: 'int4', nullable: false })
+    code: number;
 
-    @Column({ type: 'uuid' })
-    supplier_id: string;
+    @Column({ type: 'uuid', nullable: false })
+    pet_id: string;
 
-    @Column({ type: 'varchar', length: 100, nullable: false })
-    batch_code: string;
+    @Column({ type: 'uuid', nullable: false })
+    medic_id: string;
 
-    @Column({ type: 'timestamp', nullable: false })
-    expiration_date: Date;
-
-    @Column({ type: 'numeric', nullable: false })
-    quantity: number;
-
-    @Column({ type: 'numeric', nullable: true })
-    remaining_quantity: number;
-
-    @Column({ type: 'numeric', nullable: false })
-    unit_price: number;
+    @Column({ type: 'int4', nullable: false })
+    total_quantity: number;
+    
+    @Column({ type: 'enum', enum: TypeEnum, nullable: false })
+    type: TypeEnum;
 
     @CreateDateColumn({ type: 'uuid' })
     created_by: string;
@@ -57,12 +50,4 @@ export class StockEntryEntity extends BaseEntity {
     @ManyToOne(() => UserEntity)
     @JoinColumn([{ name: 'edited_by', referencedColumnName: 'id' }])
     editedBy: UserEntity;
-
-    @ManyToOne(() => RawMaterialEntity)
-    @JoinColumn([{ name: 'raw_material_id', referencedColumnName: 'id' }])
-    rawMaterial: RawMaterialEntity;
-
-    @ManyToOne(() => SupplierEntity)
-    @JoinColumn([{ name: 'supplier_id', referencedColumnName: 'id' }])
-    supplier: SupplierEntity;
 }

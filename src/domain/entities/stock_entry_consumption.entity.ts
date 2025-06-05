@@ -1,32 +1,20 @@
-import { BaseEntity } from "src/infrastructure/database/base";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { TypeEnum, UnitEnum } from "../enum";
-import { TherapeuticClassEnum } from "../enum/therapeutic-class.enum";
 import { UserEntity } from "./user.entity";
+import { StockEntryEntity } from "./stock-entry.entity";
+import { BaseEntity } from "src/infrastructure/database/base";
+import { ManipulationOrderEntity } from "./manipulation-order.entity";
 
-@Entity('raw_material')
-export class RawMaterialEntity extends BaseEntity {
-    
-    @Column({ type: 'int4', nullable: false})
-    code: number;
+@Entity('stock_entry_consumption')
+export class StockEntryConsumptionEntity extends BaseEntity {
 
-    @Column({ type: 'varchar', length: 100, nullable: false })
-    name: string;
+    @Column({ type: 'uuid', nullable: false })
+    stock_entry_id: string;
 
-    @Column({ type: 'enum', enum: TypeEnum, nullable: false })
-    type: TypeEnum;
+    @Column({ type: 'uuid', nullable: true })
+    manipulation_order_id: string;
 
-    @Column({ type: 'enum', enum: UnitEnum, nullable: false })
-    unit: UnitEnum;
-
-    @Column({ type: 'bool', default: false, nullable: true })
-    is_refrigerated: boolean;
-
-    @Column({ type: 'enum', enum: TherapeuticClassEnum, nullable: true })
-    therapeutic_class: TherapeuticClassEnum;
-
-    @Column({ type: 'varchar', length: 1000, nullable: true })
-    notes: string;
+    @Column({ type: 'numeric', nullable: true })
+    quantity_consumed: number;
 
     @CreateDateColumn({ type: 'uuid' })
     created_by: string;
@@ -57,4 +45,12 @@ export class RawMaterialEntity extends BaseEntity {
     @ManyToOne(() => UserEntity)
     @JoinColumn([{ name: 'edited_by', referencedColumnName: 'id' }])
     editedBy: UserEntity;
+
+    @ManyToOne(() => StockEntryEntity)
+    @JoinColumn([{ name: 'stock_entry_id', referencedColumnName: 'id' }])
+    stockEntry: StockEntryEntity;
+
+    @ManyToOne(() => ManipulationOrderEntity)
+    @JoinColumn([{ name: 'manipulation_order_id', referencedColumnName: 'id' }])
+    manipulationOrder: ManipulationOrderEntity;
 }

@@ -31,7 +31,6 @@ export class StockEntryRepository extends BaseRepository<StockEntryEntity> {
       'rawMaterial.name',
       'rawMaterial.type',
       'rawMaterial.unit',
-      'rawMaterial.crmv',
       'rawMaterial.is_refrigerated',
       'rawMaterial.therapeutic_class',
       'rawMaterial.notes',
