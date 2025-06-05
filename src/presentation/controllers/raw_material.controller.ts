@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Patch, Post, Put } from "@nestjs/common";
 import { AuthUserDto } from "src/application/dto";
-import { ArchiveUnarchiveRawMaterialUsecase, CreateRawMaterialUsecase, GetAllRawMaterialUsecase, GetRawMaterialByIdUsecase, SelectRawMaterialUsecase, UpdateRawMaterialUsecase } from "src/application/usecases";
+import { ArchiveUnarchiveRawMaterialUsecase, CheckRawMaterialNameUsecase, CreateRawMaterialUsecase, GetAllRawMaterialUsecase, GetRawMaterialByIdUsecase, SelectRawMaterialUsecase, UpdateRawMaterialUsecase } from "src/application/usecases";
 import { GetUser } from "src/common/user";
 import { PetEntity } from "src/domain/entities";
 import { UpdateResult } from "typeorm";
@@ -14,6 +14,7 @@ export class RawMaterialController {
         private readonly createRawMaterialUsecase: CreateRawMaterialUsecase,
         private readonly archiveUnarchiveRawMaterialUsecase: ArchiveUnarchiveRawMaterialUsecase,
         private readonly updateRawMaterialUsecase: UpdateRawMaterialUsecase,
+        private readonly checkRawMaterialNameUsecase: CheckRawMaterialNameUsecase,
     ) {}
 
   @Get()
@@ -22,13 +23,18 @@ export class RawMaterialController {
   }
 
   @Get(':id')
-  getById(@Param('id') petId: string) {
-    return this.getRawMaterialByIdUsecase.process(petId);
+  getById(@Param('id') id: string) {
+    return this.getRawMaterialByIdUsecase.process(id);
   }
 
   @Get('select')
   getAllForSelect() {
     return this.selectRawMaterialUsecase.process();
+  }
+
+  @Get('name/check/:name')
+  async getByName(@Param('name') name: string) {
+    return await this.checkRawMaterialNameUsecase.process(name);
   }
 
   @Post()

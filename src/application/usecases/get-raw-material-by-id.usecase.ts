@@ -5,10 +5,10 @@ import { RawMaterialRepository } from "src/infrastructure/database/repositories"
 @Injectable()
 export class GetRawMaterialByIdUsecase {
   constructor(
-    private readonly petRepository: RawMaterialRepository,
+    private readonly repository: RawMaterialRepository,
   ) {}
 
   async process(id: string): Promise<RawMaterialEntity | null> {
-    return await this.petRepository.getById(id);
+    return await this.repository.getById(id);
   }
 }

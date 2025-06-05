@@ -52,6 +52,7 @@ import {
   UpdateSupplierUsecase,
   SelectSupplierUsecase,
   ArchiveUnarchiveSupplierUsecase,
+  CheckRawMaterialNameUsecase,
 } from './usecases';
 
 @Module({
@@ -108,6 +109,7 @@ import {
     UpdateSupplierUsecase,
     SelectSupplierUsecase,
     ArchiveUnarchiveSupplierUsecase,
+    CheckRawMaterialNameUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -161,6 +163,7 @@ import {
     UpdateSupplierUsecase,
     SelectSupplierUsecase,
     ArchiveUnarchiveSupplierUsecase,
+    CheckRawMaterialNameUsecase,
   ],
 })
 export class ApplicationModule {}

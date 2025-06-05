@@ -21,6 +21,12 @@ export class RawMaterialRepository extends BaseRepository<RawMaterialEntity> {
       .getMany();
   }
 
+  async getByName(name: string): Promise<RawMaterialEntity | null> {
+    return this._repository.findOne({
+      where: { name }
+    })
+  }
+
   async findWithRelations(): Promise<RawMaterialEntity[]>{
     return this._repository
     .createQueryBuilder('rawMaterial')
