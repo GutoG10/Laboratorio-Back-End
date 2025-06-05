@@ -7,3 +7,4 @@ export * from './medic.entity';
 export * from './raw-material.entity';
 export * from './stock-entry.entity';
 export * from './supplier.entity';
+export * from './stock_entry_consumption.entity';
