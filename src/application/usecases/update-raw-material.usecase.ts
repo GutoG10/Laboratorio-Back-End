@@ -11,7 +11,7 @@ export class UpdateRawMaterialUsecase {
     async process(id: string, data: Partial<RawMaterialEntity>, user: AuthUserDto): Promise<UpdateResult>{
     if (data.name){
       const nameExists = await this._repository.getByName(data.name);
-      if(nameExists){
+      if(nameExists && nameExists.id !== data.id){
         throw new BadRequestException(`Raw material with name "${data.name}" already exists! Please provide a different name.`);
       }
     }
