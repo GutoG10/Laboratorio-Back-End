@@ -16,6 +16,9 @@ export class StockEntryConsumptionEntity extends BaseEntity {
     @Column({ type: 'numeric', nullable: true })
     quantity_consumed: number;
 
+    @Column({ type: "numeric", nullable: true})
+    price: number;
+
     @CreateDateColumn({ type: 'uuid' })
     created_by: string;
 

@@ -27,6 +27,7 @@ export class StockEntryRepository extends BaseRepository<StockEntryEntity> {
       'stockEntry.unit_price',
       'stockEntry.batch_code',
       'stockEntry.expiration_date',
+      'stockEntry.remaining_quantity',
       'rawMaterial.code',
       'rawMaterial.name',
       'rawMaterial.type',
@@ -52,6 +53,8 @@ export class StockEntryRepository extends BaseRepository<StockEntryEntity> {
       'archived.last_name',
       'stockEntry.archived',
     ])
+    .orderBy('rawMaterial.name', 'ASC')
+    .addOrderBy('stockEntry.expiration_date', 'ASC')
     .getMany();
   }
     
