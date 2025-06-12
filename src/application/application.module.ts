@@ -53,6 +53,7 @@ import {
   SelectSupplierUsecase,
   ArchiveUnarchiveSupplierUsecase,
   CheckRawMaterialNameUsecase,
+  GetUserByEmailUsecase
 } from './usecases';
 
 @Module({
@@ -110,6 +111,7 @@ import {
     SelectSupplierUsecase,
     ArchiveUnarchiveSupplierUsecase,
     CheckRawMaterialNameUsecase,
+    GetUserByEmailUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -164,6 +166,7 @@ import {
     SelectSupplierUsecase,
     ArchiveUnarchiveSupplierUsecase,
     CheckRawMaterialNameUsecase,
+    GetUserByEmailUsecase,
   ],
 })
 export class ApplicationModule {}
