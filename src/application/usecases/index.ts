@@ -60,6 +60,7 @@ export * from './get-all-stock-entry.usecase';
 export * from './update-stock-entry.usecase';
 export * from './archive-unarchive-stock-entry.usecase';
 export * from './get-stock-entry-by-id.usecase';
+export * from './get-all-consumption-by-stock-id.usecase';
 
 //SUPPLIER
 export * from './create-supplier.usecase';

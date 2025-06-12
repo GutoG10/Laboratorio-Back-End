@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Post, Body, Patch, Put } from "@nestjs/common";
 import { AuthUserDto } from "src/application/dto";
-import { GetAllStockEntryUsecase, GetStockEntryByIdUsecase, CreateStockEntryUsecase, ArchiveUnarchiveStockEntryUsecase, UpdateStockEntryUsecase } from "src/application/usecases";
+import { GetAllStockEntryUsecase, GetStockEntryByIdUsecase, CreateStockEntryUsecase, ArchiveUnarchiveStockEntryUsecase, UpdateStockEntryUsecase, GetAllConsumptionByStockIdUsecase } from "src/application/usecases";
 import { GetUser } from "src/common/user";
 import { PetEntity } from "src/domain/entities";
 import { UpdateResult } from "typeorm";
@@ -13,6 +13,7 @@ export class StockEntryController {
         private readonly createStockEntryUsecase: CreateStockEntryUsecase,
         private readonly archiveUnarchiveStockEntryUsecase: ArchiveUnarchiveStockEntryUsecase,
         private readonly updateStockEntryUsecase: UpdateStockEntryUsecase,
+        private readonly getAllConsumptionByStockIdUsecase: GetAllConsumptionByStockIdUsecase,
     ) {}
 
   @Get()
@@ -23,6 +24,11 @@ export class StockEntryController {
   @Get(':id')
   getById(@Param('id') petId: string) {
     return this.getStockEntryByIdUsecase.process(petId);
+  }
+
+  @Get(':id/stock-consumption')
+  getAllConsumptionByStockId(@Param('id') stockId: string) {
+    return this.getAllConsumptionByStockIdUsecase.process(stockId);
   }
 
   @Post()
