@@ -3,6 +3,7 @@ export * from './create-user.usecase';
 export * from './select-user.usecase';
 export * from './update-user.usecase';
 export * from './get-user-by-email.usecase';
+export * from './update-password.usecase';
 
 //CLIENT
 export * from './create-client.usecase';
