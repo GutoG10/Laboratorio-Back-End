@@ -8,6 +8,7 @@ import {
   UpdatePetUsecase,
 } from 'src/application/usecases';
 import { GetPetByIdUsecase } from 'src/application/usecases/get-pet-by-id.usecase';
+import { GetPetDetailByIdUsecase } from 'src/application/usecases/get-pet-detail-by-id.usecase';
 import { GetUser } from 'src/common/user';
 import { PetEntity } from 'src/domain/entities/pet.entity';
 import { UpdateResult } from 'typeorm';
@@ -21,6 +22,7 @@ export class PetController {
     private readonly updatePetUsecase: UpdatePetUsecase,
     private readonly archiveUnarchivePetUsecase: ArchiveUnarchivePetUsecase,
     private readonly getPetByIdUsecase: GetPetByIdUsecase,
+    private readonly getPetDetailByIdUsecase: GetPetDetailByIdUsecase,
   ) {}
 
   @Get()
@@ -31,6 +33,11 @@ export class PetController {
   @Get(':id')
   getById(@Param('id') petId: string) {
     return this.getPetByIdUsecase.process(petId);
+  }
+
+  @Get(':id/detail')
+  async getPetDetailById(@Param('id') petId: string) {
+    return await this.getPetDetailByIdUsecase.process(petId)
   }
 
   @Get('select')

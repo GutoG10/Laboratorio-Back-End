@@ -55,7 +55,8 @@ import {
   CheckRawMaterialNameUsecase,
   GetUserByEmailUsecase,
   GetAllConsumptionByStockIdUsecase,
-  UpdatePasswordUsecase
+  UpdatePasswordUsecase,
+  GetPetDetailByIdUsecase
 } from './usecases';
 
 @Module({
@@ -116,6 +117,7 @@ import {
     GetUserByEmailUsecase,
     GetAllConsumptionByStockIdUsecase,
     UpdatePasswordUsecase,
+    GetPetDetailByIdUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -173,6 +175,7 @@ import {
     GetUserByEmailUsecase,
     GetAllConsumptionByStockIdUsecase,
     UpdatePasswordUsecase,
+    GetPetDetailByIdUsecase,
   ],
 })
 export class ApplicationModule {}
