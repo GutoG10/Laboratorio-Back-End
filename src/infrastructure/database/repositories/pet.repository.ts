@@ -20,6 +20,34 @@ export class PetRepository extends BaseRepository<PetEntity> {
       .getMany();
   }
 
+  async findDetailById(id: string): Promise<PetEntity | null> {
+    return await this._repository
+      .createQueryBuilder('pet')
+      .leftJoinAndSelect('pet.animalBreed', 'breed')
+      .leftJoinAndSelect('pet.animalSpecie', 'specie')
+      .leftJoinAndSelect('pet.client', 'client')
+      .select([
+        'pet.id',
+        'pet.name',
+        'pet.weight',
+        'pet.birth_date',
+        'pet.notes',
+        'specie.id',
+        'specie.name',
+        'breed.id',
+        'breed.name',
+        'client.id',
+        'client.name',
+        'client.last_name',
+        'client.phone',
+        'client.email',
+        'client.address',
+        'client.notes',
+      ])
+      .where("pet.id = :id", { id: id})
+      .getOne()
+  }
+
   async findWithRelations(): Promise<PetEntity[]> {
     return this._repository
       .createQueryBuilder('pet')

@@ -37,6 +37,7 @@ export * from './select-pet.usecase';
 export * from './update-pet.usecase';
 export * from './archive-unarchive-pet.usecase';
 export * from './get-pet-by-id.usecase';
+export * from './get-pet-detail-by-id.usecase';
 
 //MEDIC
 export * from './create-medic.usecase'; 
