@@ -12,6 +12,27 @@ export class StockEntryRepository extends BaseRepository<StockEntryEntity> {
     super(_repository);
   }
 
+  async getByMaterialId(rawMaterialId: string): Promise<StockEntryEntity[]> {
+    return this._repository
+      .createQueryBuilder('stockEntry')
+      .leftJoinAndSelect('stockEntry.supplier', 'supplier')
+      .select([
+        'stockEntry.id',
+        'stockEntry.quantity',
+        'stockEntry.unit_price',
+        'stockEntry.batch_code',
+        'stockEntry.expiration_date',
+        'stockEntry.remaining_quantity',
+        'stockEntry.raw_material_id',
+        'stockEntry.created_at',
+        'supplier.id',
+        'supplier.name'
+      ])
+      .orderBy('stockEntry.expiration_date', 'ASC')
+      .addOrderBy('stockEntry.created_at', 'ASC')
+      .where("stockEntry.raw_material_id = :raw_material_id", { raw_material_id: rawMaterialId })
+      .getMany();
+  }
 
   async findWithRelations(): Promise<StockEntryEntity[]>{
     return this._repository
