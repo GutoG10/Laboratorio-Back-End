@@ -1,6 +1,6 @@
 import { UserRepository } from "src/infrastructure/database/repositories";
 import { AuthUserDto, PasswordDTO } from "../dto";
-import { BadRequestException, Injectable, Logger, UnauthorizedException } from "@nestjs/common";
+import { BadRequestException, Injectable, UnauthorizedException } from "@nestjs/common";
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
