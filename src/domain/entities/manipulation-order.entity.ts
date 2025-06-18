@@ -1,7 +1,10 @@
 import { BaseEntity } from "src/infrastructure/database/base";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { TypeEnum } from "../enum";
+import { ManipulationOrderTypeEnum, TypeEnum } from "../enum";
 import { UserEntity } from "./user.entity";
+import { MedicEntity } from "./medic.entity";
+import { PetEntity } from "./pet.entity";
+import { timestamp } from "rxjs";
 
 @Entity('manipulation_order')
 export class ManipulationOrderEntity extends BaseEntity {
@@ -18,8 +21,11 @@ export class ManipulationOrderEntity extends BaseEntity {
     @Column({ type: 'int4', nullable: false })
     total_quantity: number;
     
-    @Column({ type: 'enum', enum: TypeEnum, nullable: false })
-    type: TypeEnum;
+    @Column({ type: 'enum', enum: ManipulationOrderTypeEnum, nullable: false })
+    type: ManipulationOrderTypeEnum;
+
+    @Column({ type: 'timestamp', nullable: false})
+    expiration_date: Date;
 
     @CreateDateColumn({ type: 'uuid' })
     created_by: string;
@@ -50,4 +56,12 @@ export class ManipulationOrderEntity extends BaseEntity {
     @ManyToOne(() => UserEntity)
     @JoinColumn([{ name: 'edited_by', referencedColumnName: 'id' }])
     editedBy: UserEntity;
+
+    @ManyToOne(() => MedicEntity)
+    @JoinColumn([{ name: 'medic_id', referencedColumnName: 'id' }])
+    medic: MedicEntity;
+
+    @ManyToOne(() => PetEntity)
+    @JoinColumn([{ name: 'pet_id', referencedColumnName: 'id' }])
+    pet: PetEntity;
 }

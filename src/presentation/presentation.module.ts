@@ -8,7 +8,8 @@ import {
   MedicController,
   RawMaterialController,
   StockEntryController,
-  SupplierController
+  SupplierController,
+  ManipulationOrderController
 } from './controllers';
 import { ApplicationModule } from 'src/application/application.module';
 
@@ -24,6 +25,7 @@ import { ApplicationModule } from 'src/application/application.module';
     RawMaterialController,
     StockEntryController,
     SupplierController,
+    ManipulationOrderController
   ],
   exports: [PresentationModule],
 })
