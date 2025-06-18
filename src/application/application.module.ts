@@ -57,7 +57,8 @@ import {
   GetAllConsumptionByStockIdUsecase,
   UpdatePasswordUsecase,
   GetPetDetailByIdUsecase,
-  GetStockEntryByMaterialIdUsecase
+  GetStockEntryByMaterialIdUsecase,
+  CreateManipulationOrderUsecase
 } from './usecases';
 
 @Module({
@@ -120,6 +121,7 @@ import {
     UpdatePasswordUsecase,
     GetPetDetailByIdUsecase,
     GetStockEntryByMaterialIdUsecase,
+    CreateManipulationOrderUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -179,6 +181,7 @@ import {
     UpdatePasswordUsecase,
     GetPetDetailByIdUsecase,
     GetStockEntryByMaterialIdUsecase,
+    CreateManipulationOrderUsecase,
   ],
 })
 export class ApplicationModule {}

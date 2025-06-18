@@ -7,3 +7,4 @@ export * from './medic.controller';
 export * from './raw_material.controller';
 export * from './stock-entry.controller';
 export * from './supplier.controller';
+export * from './manipulation-order.controller';

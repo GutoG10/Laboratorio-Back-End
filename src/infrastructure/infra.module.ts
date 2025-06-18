@@ -22,6 +22,7 @@ import {
   StockEntryRepository,
   SupplierRepository,
   StockEntryConsumptionRepository,
+  ManipulationOrderRepository,
 } from './database/repositories/';
 import { PetEntity } from 'src/domain/entities/pet.entity';
 import { PetRepository } from './database/repositories/pet.repository';
@@ -94,6 +95,11 @@ import { ManipulationOrderEntity } from 'src/domain/entities/manipulation-order.
       provide: BaseRepository<StockEntryConsumptionEntity>,
       useClass: StockEntryConsumptionRepository,
     },
+    ManipulationOrderRepository,
+    {
+      provide: BaseRepository<ManipulationOrderEntity>,
+      useClass: ManipulationOrderRepository,
+    }
   ],
   exports: [
     UserRepository,
@@ -106,6 +112,7 @@ import { ManipulationOrderEntity } from 'src/domain/entities/manipulation-order.
     StockEntryRepository,
     SupplierRepository,
     StockEntryConsumptionRepository,
+    ManipulationOrderRepository,
   ],
 })
 export class InfraModule {}
