@@ -74,4 +74,6 @@ export * from './archive-unarchive-supplier.usecase';
 export * from './get-supplier-by-id.usecase';
 
 //MANIPULATION ORDER
-export * from './create-manipulation-order.usecase'
+export * from './create-manipulation-order.usecase';
+export * from './get-all-manipulation-order.usecase';
+export * from './get-manipulation-order-by-id.usecase';
