@@ -39,6 +39,7 @@ export class CreateManipulationOrderUsecase {
                 await this._stockEntryRepository.update(stockEntries.id, { remaining_quantity: stockEntries.remaining_quantity - consumption.quantity })
                 await this._stockConsumptionRepository.create({ 
                     manipulation_order_id: manipulationOrder.id,
+                    type: consumption.type,
                     quantity_consumed: consumption.quantity,
                     stock_entry_id: consumption.stock_entry_id,
                     price: stockEntries.unit_price * consumption.quantity,

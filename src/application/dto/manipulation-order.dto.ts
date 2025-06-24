@@ -1,4 +1,4 @@
-import { ManipulationOrderTypeEnum } from "src/domain/enum"
+import { ManipulationOrderTypeEnum, StockEntryConsumptionTypeEnum } from "src/domain/enum"
 
 import {
   IsUUID,
@@ -18,6 +18,9 @@ class StockEntryConsumptionDTO {
   @IsInt()
   @Min(1)
   quantity: number;
+
+  @IsEnum(StockEntryConsumptionTypeEnum)
+  type: StockEntryConsumptionTypeEnum
 }
 
 export class ManipulationOrderDTO {
