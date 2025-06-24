@@ -2,7 +2,7 @@ import { Controller, Get, Param, Post, Body, Patch, Put } from "@nestjs/common";
 import { AuthUserDto } from "src/application/dto";
 import { GetAllStockEntryUsecase, GetStockEntryByIdUsecase, CreateStockEntryUsecase, ArchiveUnarchiveStockEntryUsecase, UpdateStockEntryUsecase, GetAllConsumptionByStockIdUsecase } from "src/application/usecases";
 import { GetUser } from "src/common/user";
-import { PetEntity } from "src/domain/entities";
+import { StockEntryEntity } from "src/domain/entities";
 import { UpdateResult } from "typeorm";
 
 @Controller('stock-entry')
@@ -22,8 +22,8 @@ export class StockEntryController {
   }
 
   @Get(':id')
-  getById(@Param('id') petId: string) {
-    return this.getStockEntryByIdUsecase.process(petId);
+  getById(@Param('id') stockId: string) {
+    return this.getStockEntryByIdUsecase.process(stockId);
   }
 
   @Get(':id/stock-consumption')
@@ -32,8 +32,9 @@ export class StockEntryController {
   }
 
   @Post()
-  create(@GetUser() user: AuthUserDto, @Body() data: Partial<PetEntity>) {
+  create(@GetUser() user: AuthUserDto, @Body() data: Partial<StockEntryEntity>) {
     data.created_by = user.id;
+    data.remaining_quantity = data.quantity;
     return this.createStockEntryUsecase.process(data);
   }
 
@@ -48,7 +49,7 @@ export class StockEntryController {
   @Put(':id')
   update(
     @Param('id') id: string,
-    @Body() data: Partial<PetEntity>,
+    @Body() data: Partial<StockEntryEntity>,
     @GetUser() user: AuthUserDto,
   ): Promise<UpdateResult> {
     return this.updateStockEntryUsecase.process(id, data, user);

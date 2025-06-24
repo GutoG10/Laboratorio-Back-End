@@ -3,6 +3,7 @@ import { UserEntity } from "./user.entity";
 import { StockEntryEntity } from "./stock-entry.entity";
 import { BaseEntity } from "src/infrastructure/database/base";
 import { ManipulationOrderEntity } from "./manipulation-order.entity";
+import { StockEntryConsumptionTypeEnum } from "../enum";
 
 @Entity('stock_entry_consumption')
 export class StockEntryConsumptionEntity extends BaseEntity {
@@ -18,6 +19,9 @@ export class StockEntryConsumptionEntity extends BaseEntity {
 
     @Column({ type: "numeric", nullable: true})
     price: number;
+
+    @Column({ type: 'enum', enum: StockEntryConsumptionTypeEnum })
+    type: StockEntryConsumptionTypeEnum;
 
     @CreateDateColumn({ type: 'uuid' })
     created_by: string;
