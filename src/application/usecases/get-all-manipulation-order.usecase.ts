@@ -1,39 +1,46 @@
-import { Injectable } from "@nestjs/common";
-import { ManipulationOrderRepository, StockEntryConsumptionRepository } from "src/infrastructure/database/repositories";
-import { GetAllManipulationOrderDTO } from "../dto/";
+import { Injectable } from '@nestjs/common';
+import {
+  ManipulationOrderRepository,
+  StockEntryConsumptionRepository,
+} from 'src/infrastructure/database/repositories';
+import { GetAllManipulationOrderDTO } from '../dto/';
 
 @Injectable()
 export class GetAllManipulationOrderUsecase {
-    constructor(
-        private readonly _repository: ManipulationOrderRepository,
-        private readonly _stockConsumptionRepository: StockEntryConsumptionRepository,
-    ) {}
+  constructor(
+    private readonly _repository: ManipulationOrderRepository,
+    private readonly _stockConsumptionRepository: StockEntryConsumptionRepository,
+  ) {}
 
-    private response: GetAllManipulationOrderDTO[] = [];
+  async process(): Promise<GetAllManipulationOrderDTO[]> {
+    const manipulationOrders = await this._repository.getAllWithRelations();
 
-    async process() {
-        const manipulationOrders = await this._repository.getAllWithRelations();
+    const response = await Promise.all(
+      manipulationOrders.map(async (manipulation) => {
+        const stockEntryConsumption =
+          await this._stockConsumptionRepository.GetPriceByManipulationID(
+            manipulation.id,
+          );
 
-        manipulationOrders.forEach(async manipulation => {
-            let totalPrice = 0;
-            const stockEntryConsumption = await this._stockConsumptionRepository.GetPriceByManipulationID(manipulation.id);
-            stockEntryConsumption.forEach(consumption => {
-                totalPrice += consumption.price;
-            });
+        const totalPrice = stockEntryConsumption.reduce(
+          (sum, consumption) => sum + consumption.price,
+          0,
+        );
 
-            this.response.push({
-                    id: manipulation.id,
-                    code: manipulation.code,
-                    pet: manipulation.pet,
-                    expiration_date: manipulation.expiration_date,
-                    medic: manipulation.medic,
-                    createdAt: manipulation.created_at,
-                    createdBy: manipulation.createdBy,
-                    total_quantity: Number(manipulation.total_quantity),
-                    total_price: Number(totalPrice)
-            })
-        });
-        
-        return this.response;
-    }
+        return {
+          id: manipulation.id,
+          code: manipulation.code,
+          pet: manipulation.pet,
+          expiration_date: manipulation.expiration_date,
+          medic: manipulation.medic,
+          createdAt: manipulation.created_at,
+          createdBy: manipulation.createdBy,
+          total_quantity: Number(manipulation.total_quantity),
+          total_price: Number(totalPrice),
+        };
+      }),
+    );
+
+    return response;
+  }
 }

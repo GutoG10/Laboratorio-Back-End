@@ -7,6 +7,7 @@ export class CreateStockEntryUsecase {
   constructor(private readonly repository: StockEntryRepository) {}
 
   process(data: Partial<StockEntryEntity>): Promise<StockEntryEntity> {
+    data.remaining_quantity = data.quantity;
     return this.repository.create(data);
   }
 }
