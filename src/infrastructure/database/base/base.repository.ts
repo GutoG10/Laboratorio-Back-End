@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { BaseEntity } from './base.entity';
 import {
   DeepPartial,
+  DeleteResult,
   FindOptionsWhere,
   Repository,
   UpdateResult,
@@ -37,7 +38,11 @@ export abstract class BaseRepository<T extends BaseEntity> {
     );
   }
 
-  async delete(id: string): Promise<void> {
-    await this.repository.delete(id);
+  async delete(id: string): Promise<DeleteResult> {
+    return await this.repository.createQueryBuilder()
+      .delete()
+      .from(this.repository.metadata.tableName)
+      .where("id = :id", { id })
+      .execute();
   }
 }

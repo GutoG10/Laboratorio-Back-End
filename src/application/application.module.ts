@@ -61,7 +61,8 @@ import {
   CreateManipulationOrderUsecase,
   GetAllManipulationOrderUsecase,
   GetManipulationOrderByIdUsecase,
-  UpdateManipulationOrderUsecase
+  UpdateManipulationOrderUsecase,
+  DeleteManipulationOrderUsecase
 } from './usecases';
 
 @Module({
@@ -128,6 +129,7 @@ import {
     GetAllManipulationOrderUsecase,
     GetManipulationOrderByIdUsecase,
     UpdateManipulationOrderUsecase,
+    DeleteManipulationOrderUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -191,6 +193,7 @@ import {
     GetAllManipulationOrderUsecase,
     GetManipulationOrderByIdUsecase,
     UpdateManipulationOrderUsecase,
+    DeleteManipulationOrderUsecase,
   ],
 })
 export class ApplicationModule {}

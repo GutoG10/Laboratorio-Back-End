@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { AuthUserDto, ManipulationOrderDTO } from "src/application/dto";
-import { CreateManipulationOrderUsecase, GetAllManipulationOrderUsecase, GetManipulationOrderByIdUsecase, UpdateManipulationOrderUsecase } from "src/application/usecases";
+import { CreateManipulationOrderUsecase, DeleteManipulationOrderUsecase, GetAllManipulationOrderUsecase, GetManipulationOrderByIdUsecase, UpdateManipulationOrderUsecase } from "src/application/usecases";
 import { GetUser } from "src/common/user";
 
 @Controller('manipulation-order')
@@ -10,7 +10,7 @@ export class ManipulationOrderController {
         private readonly getAllManipulationOrderUsecase: GetAllManipulationOrderUsecase,
         private readonly getManipulationOrderByIdUsecase: GetManipulationOrderByIdUsecase,
         private readonly updateManipulationOrderUsecase: UpdateManipulationOrderUsecase,
-
+        private readonly deleteManipulationOrderUsecase: DeleteManipulationOrderUsecase,
     ){}
 
     @Get()
@@ -38,5 +38,10 @@ export class ManipulationOrderController {
         @GetUser() user: AuthUserDto
     ){
         return await this.createManipulationOrderUsecase.process(data, user)
+    }
+
+    @Delete(':id')
+    async delete(@Param('id') id: string) {
+        return await this.deleteManipulationOrderUsecase.process(id);
     }
 }
