@@ -14,6 +14,7 @@ export class GetAllManipulationOrderUsecase {
 
   async process(): Promise<GetAllManipulationOrderDTO[]> {
     const manipulationOrders = await this._repository.getAllWithRelations();
+    let totalPrice = 0
 
     const response = await Promise.all(
       manipulationOrders.map(async (manipulation) => {
@@ -22,10 +23,9 @@ export class GetAllManipulationOrderUsecase {
             manipulation.id,
           );
 
-        const totalPrice = stockEntryConsumption.reduce(
-          (sum, consumption) => sum + consumption.price,
-          0,
-        );
+        for (const consumption of stockEntryConsumption) {
+          totalPrice += Number(consumption.price); 
+        }
 
         return {
           id: manipulation.id,
