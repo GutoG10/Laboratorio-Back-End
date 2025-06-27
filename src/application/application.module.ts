@@ -60,7 +60,8 @@ import {
   GetStockEntryByMaterialIdUsecase,
   CreateManipulationOrderUsecase,
   GetAllManipulationOrderUsecase,
-  GetManipulationOrderByIdUsecase
+  GetManipulationOrderByIdUsecase,
+  UpdateManipulationOrderUsecase
 } from './usecases';
 
 @Module({
@@ -126,6 +127,7 @@ import {
     CreateManipulationOrderUsecase,
     GetAllManipulationOrderUsecase,
     GetManipulationOrderByIdUsecase,
+    UpdateManipulationOrderUsecase,
   ],
   exports: [
     GetAllClientUsecase,
@@ -188,6 +190,7 @@ import {
     CreateManipulationOrderUsecase,
     GetAllManipulationOrderUsecase,
     GetManipulationOrderByIdUsecase,
+    UpdateManipulationOrderUsecase,
   ],
 })
 export class ApplicationModule {}

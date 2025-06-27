@@ -12,6 +12,12 @@ export class StockEntryRepository extends BaseRepository<StockEntryEntity> {
     super(_repository);
   }
 
+  async getOneById(id: string): Promise<StockEntryEntity | null> {
+  return await this._repository.findOne({
+    where: { id },
+  });
+}
+
   async getByMaterialId(rawMaterialId: string): Promise<StockEntryEntity[]> {
     return this._repository
       .createQueryBuilder('stockEntry')

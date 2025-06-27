@@ -18,7 +18,7 @@ export class GetManipulationOrderByIdUsecase {
             return null;
         }
 
-        const stockEntryConsumptions = await this._stockEntryConsumptionRepository.GetAllConsumptionByManipulationId(id)
+        const stockEntryConsumptions = await this._stockEntryConsumptionRepository.getAllConsumptionByManipulationId(id)
 
         this.response = {
             id: manipulationOrder.id,

@@ -47,7 +47,7 @@ export class StockEntryConsumptionRepository extends BaseRepository<StockEntryCo
     .getMany()
   }
 
-  async GetAllConsumptionByManipulationId(id: string): Promise<StockEntryConsumptionEntity[]> {
+  async getAllConsumptionByManipulationId(id: string): Promise<StockEntryConsumptionEntity[]> {
     return await this._repository
     .createQueryBuilder('stockEntryConsumption')
     .leftJoinAndSelect('stockEntryConsumption.stockEntry', 'stockEntry')
@@ -59,6 +59,7 @@ export class StockEntryConsumptionRepository extends BaseRepository<StockEntryCo
         'stockEntryConsumption.price',
         'stockEntryConsumption.type',
         'stockEntryConsumption.manipulation_order_id',
+        'stockEntryConsumption.stock_entry_id',
         'stockEntry.id',
         'stockEntry.batch_code',
         'stockEntry.expiration_date',
@@ -77,4 +78,13 @@ export class StockEntryConsumptionRepository extends BaseRepository<StockEntryCo
     .orderBy('stockEntryConsumption.created_at', 'ASC')
     .getMany()
   }
+
+    async deleteAllByManipulationId(id: string): Promise<void> {
+        await this._repository
+            .createQueryBuilder()
+            .delete()
+            .from(StockEntryConsumptionEntity)
+            .where('manipulation_order_id = :id', { id: id })
+            .execute();
+    }
 }

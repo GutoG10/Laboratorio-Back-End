@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
 import { AuthUserDto, ManipulationOrderDTO } from "src/application/dto";
-import { CreateManipulationOrderUsecase, GetAllManipulationOrderUsecase, GetManipulationOrderByIdUsecase } from "src/application/usecases";
+import { CreateManipulationOrderUsecase, GetAllManipulationOrderUsecase, GetManipulationOrderByIdUsecase, UpdateManipulationOrderUsecase } from "src/application/usecases";
 import { GetUser } from "src/common/user";
 
 @Controller('manipulation-order')
@@ -9,6 +9,8 @@ export class ManipulationOrderController {
         private readonly createManipulationOrderUsecase: CreateManipulationOrderUsecase,
         private readonly getAllManipulationOrderUsecase: GetAllManipulationOrderUsecase,
         private readonly getManipulationOrderByIdUsecase: GetManipulationOrderByIdUsecase,
+        private readonly updateManipulationOrderUsecase: UpdateManipulationOrderUsecase,
+
     ){}
 
     @Get()
@@ -19,6 +21,15 @@ export class ManipulationOrderController {
     @Get(':id')
     async getById(@Param('id') id: string) {
         return await this.getManipulationOrderByIdUsecase.process(id)
+    }
+
+    @Put(':id')
+    async update(
+        @Param('id') id: string,
+        @Body() data: ManipulationOrderDTO,
+        @GetUser() user: AuthUserDto
+    ){
+        return await this.updateManipulationOrderUsecase.process(id, data, user)
     }
 
     @Post()
