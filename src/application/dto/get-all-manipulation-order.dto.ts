@@ -23,6 +23,7 @@ export class GetAllManipulationOrderDTO {
       name:string
       last_name:string
     }
+    archived: boolean
     total_quantity: number
     total_price: number
 }

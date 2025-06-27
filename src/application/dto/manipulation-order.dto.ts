@@ -6,8 +6,8 @@ import {
   IsDateString,
   ValidateNested,
   IsArray,
-  IsInt,
-  Min
+  Min,
+  IsNumber
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -15,7 +15,7 @@ class StockEntryConsumptionDTO {
   @IsUUID()
   stock_entry_id: string;
 
-  @IsInt()
+  @IsNumber()
   @Min(1)
   quantity: number;
 
@@ -35,6 +35,9 @@ export class ManipulationOrderDTO {
 
   @IsDateString()
   expiration_date: Date;
+
+  @IsNumber()
+  total_quantity: number;
 
   @IsArray()
   @ValidateNested({ each: true })

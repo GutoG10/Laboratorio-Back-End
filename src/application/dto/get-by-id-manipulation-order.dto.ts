@@ -1,4 +1,5 @@
 import { ManipulationOrderTypeEnum, StockEntryConsumptionTypeEnum, UnitEnum } from "src/domain/enum"
+import { Decimal128 } from "typeorm"
 
 export class GetByIdManipulationOrderDTO {
  
@@ -9,10 +10,27 @@ export class GetByIdManipulationOrderDTO {
   pet: {
     id: string
     name: string
+    birth_date: Date
+    weight: Decimal128
+    notes: string
+    archived: boolean
+    animalBreed: {
+      id: string
+      name: string
+    }
+    animalSpecie: {
+      id: string
+      name: string
+    }
     client: {
       id: string
       name: string
       last_name: string
+      phone: string
+      email: string
+      address: string
+      notes: string
+      archived: boolean
     }
   }
   expiration_date: Date
@@ -20,6 +38,10 @@ export class GetByIdManipulationOrderDTO {
     id: string
     name: string
     last_name: string
+    crmv: string
+    notes: string
+    email: string
+    archived: boolean
   }
   createdAt: Date
   createdBy: {

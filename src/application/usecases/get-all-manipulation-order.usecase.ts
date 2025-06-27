@@ -29,6 +29,7 @@ export class GetAllManipulationOrderUsecase {
                     medic: manipulation.medic,
                     createdAt: manipulation.created_at,
                     createdBy: manipulation.createdBy,
+                    archived: manipulation.archived,
                     total_quantity: Number(manipulation.total_quantity),
                     total_price: Number(totalPrice)
             })

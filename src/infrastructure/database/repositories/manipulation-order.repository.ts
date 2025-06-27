@@ -26,6 +26,7 @@ export class ManipulationOrderRepository extends BaseRepository<ManipulationOrde
             'manipulationOrder.expiration_date',
             'manipulationOrder.total_quantity',
             'manipulationOrder.created_at',
+            'manipulationOrder.archived',
             'pet.id',
             'pet.name',
             'client.id',
@@ -48,6 +49,8 @@ export class ManipulationOrderRepository extends BaseRepository<ManipulationOrde
         .createQueryBuilder('manipulationOrder')
         .leftJoinAndSelect('manipulationOrder.pet', 'pet')
         .leftJoinAndSelect('pet.client', 'client')
+        .leftJoinAndSelect('pet.animalBreed', 'animalBreed')
+        .leftJoinAndSelect('pet.animalSpecie', 'animalSpecie')
         .leftJoinAndSelect('manipulationOrder.medic', 'medic')
         .leftJoinAndSelect('manipulationOrder.createdBy', 'creator')
         .leftJoinAndSelect('manipulationOrder.archivedBy', 'archivedBy')
@@ -62,12 +65,29 @@ export class ManipulationOrderRepository extends BaseRepository<ManipulationOrde
             'manipulationOrder.archived',
             'pet.id',
             'pet.name',
+            'pet.birth_date',
+            'pet.weight',
+            'pet.notes',
+            'pet.archived',
+            'animalBreed.id',
+            'animalBreed.name',
+            'animalSpecie.id',
+            'animalSpecie.name',
             'client.id',
             'client.name',
             'client.last_name',
+            'client.phone',
+            'client.email',
+            'client.address',
+            'client.notes',
+            'client.archived',
             'medic.id',
             'medic.name',
             'medic.last_name',
+            'medic.crmv',
+            'medic.notes',
+            'medic.email',
+            'medic.archived',
             'creator.id',
             'creator.name',
             'creator.last_name',
