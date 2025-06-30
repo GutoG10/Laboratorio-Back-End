@@ -56,7 +56,7 @@ export class RawMaterialRepository extends BaseRepository<RawMaterialEntity> {
       'archived.last_name',
       'rawMaterial.archived',
     ])
-    .orderBy('rawMaterial.code', 'ASC')
+    .orderBy('rawMaterial.code', 'DESC')
     .getMany();
   }
     
