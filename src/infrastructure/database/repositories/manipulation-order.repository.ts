@@ -39,7 +39,8 @@ export class ManipulationOrderRepository extends BaseRepository<ManipulationOrde
             'creator.name',
             'creator.last_name',
         ])
-        .orderBy('manipulationOrder.expiration_date', 'ASC')
+        .orderBy('manipulationOrder.code', 'DESC')
+        .addOrderBy('manipulationOrder.expiration_date', 'ASC')
         .addOrderBy('manipulationOrder.created_at', 'ASC')
         .getMany();
     }
